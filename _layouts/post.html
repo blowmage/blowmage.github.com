@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<div id="post">
+  <h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
+  <div id="date">published {{ page.date | date_to_string }}</div>
+  {{ content }}
+  <hr />
+  <div id="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript" src="http://disqus.com/forums/blowmage/embed.js"></script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=blowmage">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
