@@ -1,0 +1,147 @@
+body {
+	background: url(blowmage-background.gif) no-repeat scroll center top;
+	font-family: Georgia, Garamond, "Times New Roman", Roman, serif;
+	line-height: 1.6em;
+}
+
+h1 {
+	font-variant: small-caps;
+	text-shadow: #aaa 1px 1px 1px;
+}
+h2 {
+	font-variant: small-caps;
+}
+h3 {
+	font-variant: small-caps;
+}
+a:link {
+	color: #b45e14;
+}
+em {
+	background-color: #ff7c00;
+	color: #fff;
+	font-style: italic;
+	font-weight: bold;
+}
+
+div#container {
+	width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+div#container div#header {
+	width: 540px;
+	/*height: 160px;
+	background-image: url(logo3.jpg);*/
+	margin-bottom: 10px;
+}
+
+div#container div#header h1 {
+	font-variant: normal;
+	color: #ff7c00;
+	text-shadow: #000 2px 2px 2px;
+	font-size: 5em;
+}
+
+div#container div#header h2 {
+	/*display: none;*/
+}
+
+div#container div#main {
+	width: 540px;
+	overflow: auto;
+	float: left;
+}
+
+div#container div#main h1.title {
+	/*margin-left: 80px;
+	margin-right: 80px;*/
+}
+
+div#container div#main div#post {
+	float: right;
+	width: 540px;
+}
+
+div#container div#main div#meta {
+	clear: both;
+	padding-top: 8px;
+	border-top-style: solid;
+	border-top-width: 4px;
+}
+
+div#container div#main div#meta dl {
+	margin:0 0;
+	padding:0.5em 0 0.6em 0;
+}
+
+div#container div#main div#meta dt {
+	margin:0;
+	padding:0;
+	font-weight: bold;
+	font-variant: small-caps;
+	font-size: larger;
+}
+
+div#container div#main div#meta dd {
+	margin:0;
+	padding:0;
+}
+
+div#container div#main div#comments {
+	clear: both;
+	padding-top: 8px;
+	border-top-style: double;
+	border-top-width: 8px;
+}
+
+div#container div#main div#comments div.comment {
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+div#container div#main div#comments div.comment cite {
+	font-weight: bold;
+	font-style: normal;
+}
+
+div#container div#side {
+	width: 220px;
+	position: relative;
+	top: 224px;
+	float: right;
+}
+
+div#container div#side h3 {
+	border-bottom-style: double;
+}
+
+div#container div#footer {
+	clear: both;
+	padding-top: 8px;
+	text-align: center;
+	border-top-style: solid;
+	border-top-width: 8px;
+	margin-right: 240px;
+}
+
+.quote {
+	margin : 20px;
+	background-position : left top;
+	background-image : url('quotes-open.png');
+	background-repeat : no-repeat;
+}
+.quote .quotation {
+	font-size : 1.2em;
+	background-position : right bottom;
+	background-image : url('quotes-close.png');
+	background-repeat : no-repeat;
+	min-height : 28px;
+	margin-right: 20px;
+}
+.quote .source {
+	margin-left : 50px;
+	margin-top : -20px;
+	font-weight : bold;
+}
