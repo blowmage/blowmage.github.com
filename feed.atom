@@ -5,10 +5,10 @@ layout: nil
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>::blowmage::</title>
- <link href="http://blog.blowmage.com/atom.xml" rel="self"/>
- <link href="http://blog.blowmage.com/"/>
+ <link href="http://blowmage.com/atom.xml" rel="self"/>
+ <link href="http://blowmage.com/"/>
  <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>http://blog.blowmage.com/</id>
+ <id>http://blowmage.com/</id>
  <author>
    <name>Mike Moore</name>
    <email>mike@blowmage.com</email>
@@ -17,9 +17,9 @@ layout: nil
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title | xml_escape }}</title>
-   <link href="http://blog.blowmage.com{{ post.url }}"/>
+   <link href="http://blowmage.com{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://blog.blowmage.com{{ post.id }}</id>
+   <id>http://blowmage.com{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}
