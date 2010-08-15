@@ -12,14 +12,7 @@ title:  coding with spice
   <div class="comments"><a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></div>
 </div>
 
-<hr>
-
-<h2>Explore My Annals</h2>
-<ul id="archive">
-{% for post in site.posts %}
-<li><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a><abbr>{{ post.date | date_to_string }}</abbr><a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></li>
-{% endfor %}
-</ul>
+<p>See my <a href="/annals">annals</a></p>
 
 <script type="text/javascript">
 var disqus_shortname = 'blowmage';

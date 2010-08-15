@@ -1,0 +1,15 @@
+<h2>Explore My Annals</h2>
+<ul id="annals">
+{% for post in site.posts %}
+<li><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a><abbr>{{ post.date | date_to_string }}</abbr><a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></li>
+{% endfor %}
+</ul>
+
+<script type="text/javascript">
+var disqus_shortname = 'blowmage';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'http://disqus.com/forums/blowmage/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
