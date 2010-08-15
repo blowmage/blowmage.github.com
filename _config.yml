@@ -3,3 +3,4 @@
 pygments: true
 exclude:
 - README
+- CNAME
