@@ -1,0 +1,31 @@
+---
+title:  Installing eRuby on Shared Hosting
+layout: post
+---
+<p>Now that we've got <a href="/articles/2005/05/27/installing-ruby">Ruby installed</a>, we can use it to write CGI scripts. But that is so 1995, isn' t there a better way to use Ruby to create web sites? Of course there is, and the first step is <a href="http://raa.ruby-lang.org/project/eruby">eRuby</a>. eRuby interprets Ruby code that is embedded in a text file. Our interest is embedding Ruby code to a HTML file, much like <a href="http://microsoft.com/">Microsoft's</a> <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dnanchor/html/activeservpages.asp">Active Server Pages</a>, <a href="http://sun.com/">Sun's</a> <a href="http://java.sun.com/products/jsp/">Java Server Pages</a>, and <a href="http://zend.com/">Zend's</a> <a href="http://php.net/">PHP</a>.</p>
+<p>Just like installing Ruby, this is surprisingly easy to do, as we simply enter these commands in at the shell:</p>
+<pre><code>$ cd ~
+$ wget http://www.modruby.net/archive/eruby-1.0.5.tar.gz
+$ tar zxvf eruby-1.0.5.tar.gz
+$ cd eruby-1.0.5
+$ ./configure.rb --prefix=$HOME/local &amp;&amp; make &amp;&amp; make install
+$ cd ~
+$ cp local/bin/eruby public_html/cgi-bin/eruby</code></pre>
+<p>We've installed, compiled, and copied the <code>eruby</code> executable file to our site's <code>cgi-bin</code> directory. Our site is now ready to use the executable to parse our HTML files for Ruby code and execute it. To do this, we need to associate our files with the CGI executable. Parsing our files for Ruby code does add some overhead, so we probably don't want to parse every single file, so we'll associate the file extension <code>.rhtml</code> with <code>eruby</code>. We make this association in the <code>.htaccess</code> file in the <code>public_html</code> directory by adding these lines:</p>
+<pre><code>AddType application/x-httpd-eruby .rhtml
+Action application/x-httpd-eruby /cgi-bin/eruby</code></pre>
+<p>If you don't have an <code>.htaccess</code> file in your <code>public_html</code> directory then simply create one. Let's test this! Create a new file in your <code>public_html</code> directory named <code>hello.rhtml</code>. The file should include the following lines:</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Hello Ruby!&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Hello Ruby!&lt;/h1&gt;
+&lt;p&gt;
+&lt;% 5.times do %&gt;
+Hello
+&lt;% end %&gt;
+Ruby!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>When you browse to the file you will see a message that displays <q>Hello Hello Hello Hello Hello Ruby!</q> then you have officially installed eRuby, congratulations.</p>

@@ -1,0 +1,40 @@
+---
+title:  Installing Typo on Shared Hosting
+layout: post
+---
+<p>Okay, I've succumbed to the peer pressure, I've installed <a href="http://www.rubyonrails.org/">Ruby on Rails</a> and I'll even use it for this site. As I said earlier, my hosting provider is <a href="http://www.hostingplex.com/redir.php?aff=blowmage">HostingPlex</a>, and is not yet well suited to host Rails applications because <a href="http://modruby.net/">mod_ruby</a> and <a href="http://fastcgi.com/">FastCGI</a> are not installed with a shared-hosting account. I've been begging for first class Ruby support, but so far nothing has come of it. Of course, folks could always <a href="mailto:sales@hostingplex.com?subject=Ruby and Rails Support?">contact HostingPlex</a> and ask that they support Ruby and Rails in the future.</p>
+<p>I've used and said nice things about <a href="http://rubyforge.org/projects/rublog/">Rublog</a> in the past, but the reason I've decided to move from Rublog is the exact reason I chose it in the first place. Rublog works off the files on the file system, and not a database. I've found that if I need to make a change to an older article, the file's timestamp and subsequently the article's URL is changed. I've discovered that I like to correct spelling and grammar mistakes, and that ended up changing the chronological order of my site.</p>
+<p>I could have extended Rublog to change this behavior (similar to the extensions used in <a href="http://www.blosxom.com/">blosxom</a>), but I decided to switch to <a href="http://typo.leetsoft.com/">Typo</a> which uses Ruby on Rails. Typo recently released a new version that caches the generated pages on the file system, so the blog serves static HTML files the majority of the time. Compared to the performance to the older versions of Typo, the performance seems good enough (for now), even without mod_ruby and FastCGI.</p>
+<p>The first step is to download the latest version:</p>
+<pre><code>cd ~
+wget http://rubyforge.org/frs/download.php/5602/typo-2.5.5.tgz
+tar zxvf typo-2.5.5.tgz</code></pre>
+<p>Typo uses a database to store articles and comments, so the next step is going to be to create a new MySQL database. It seems HostingPlex doesn't allow you to create a new database using shell commands, so we'll use the tools available on CPanel. First, go to the CPanel and choose <q>MySQL Databases</q> and create a new DB named <code>typo</code>. This will actually create a new database named <code><em>hostname</em>_typo</code>, because your account name is always added to the beginning. The same is true for user accounts. On the MySQL page create a new user named <code>typo</code>. This will create the user <code><em>hostname</em>_typo</code>. Use the same MySQL page to add the <code><em>hostname</em>_typo</code> user to the <code><em>hostname</em>_typo</code> database with <q>All</q> privileges.</p>
+<p>Next you click the <q>phpMyAdmin</q> link at the bottom of the page. This tool will allow you to create and maintain tables in your databases. Instead of creating each table manually, we will run the script that comes with Typo. Using a new instance of CPanel, go into the <q>File Manager</q>, navigate to the <code>typo-2.5.5/db</code> directory and view the <code>schema.mysql.sql</code> file. Copy the contents of the file and paste them into the <q>SQL</q> tab in <q>phpMyAdmin</q>. You should add 15 new tables to your schema.</p>
+<p>Now that you have the tables created, you need to tell Typo what database to use. To do this, edit the <code>typo-2.5.5/config/database.yml</code> file and add your database credentials.</p>
+<pre><code>production:
+  adapter: mysql
+  database: <em>blowmage</em>_typo
+  host: localhost
+  username: <em>blowmage</em>_typo
+  password: super_secret_password</code></pre>
+<p>We need to tell Typo where to find Ruby and where to find the Typo scripts. We do this in the <code>typo-2.5.5/public/dispatch.cgi</code> script. (Because HostingPlex doesn't have Ruby installed, we installed a local version <a href="/articles/2005/05/27/installing-ruby">earlier</a>.) We also need to tell Typo that we should be running in the production environment by setting the RAILS_ENV environment value. This will tell Typo to use caching for improved performance. Change the first few lines to this:</p>
+<pre><code>#!/home/<em>blowmage</em>/local/bin/ruby
+ENV["RAILS_ENV"] = "production"
+require "/home/<em>blowmage</em>/typo-2.5.5/config/environment"</code></pre>
+<p>We also need to tell Apache to use the <code>dispatch.cgi</code> script instead of the default <code>dispatch.fgci</code>. In the <code>typo-2.5.5/public/.htaccess</code> file, change the last RewriteRule line to the following:</p>
+<pre><code>RewriteRule ^(.*)$ dispatch.cgi [QSA,L]</code></pre>
+<p>Like all Rails apps, the "typo-2.5.5/public" directory is what the web server is supposed to serve files from. However, with our shared accounts we don't have permissions to change where Apache to serves the site. Instead, we will copy the files from the public directory to the directory that Apache uses. We also need to tell Typo where to write the cached files so that Typo and Rails don't load into memory with every request – killing performance. The configuration isn't difficult, but it needs to be set in two different files. First, the <code>typo-2.5.5/config/environments/production.rb</code> file needs the following lines added to it.</p>
+<pre><code>ActionController::Base.page_cache_directory = "/home/<em>blowmage</em>/public_html"
+ActionController::Base.page_cache_extension = ".html"</code></pre>
+<p>Second, we need to tell Typo's <code>PageCache</code> class where to remove the cached entries from. (I believe this is a flaw in the current design, and I have opened a <a href="http://typo.leetsoft.com/trac/ticket/328">case</a>. As of this writing, the case has not yet been assigned.) So change the <code>typo-2.5.5/app/models/page_cache.rb</code> file to the following:</p>
+<pre><code>class PageCache &lt; ActiveRecord::Base
+  
+  cattr_accessor :public_path
+#  @@public_path = RAILS_ROOT + "/public"
+  @@public_path = "/home/<em>blowmage</em>/public_html"</code></pre>
+<p>Alright, we're almost there! We just need to copy the public files to our site.</p>
+<pre><code>cd ~
+cp –r typo-2.5.5/public/* public_html
+cp –r typo-2.5.5/public/.htaccess public_html/.htaccess</code></pre>
+<p>Now when you browse to your site you will be prompted for your login information. Enter your info and you will be redirected to the admin section. You can now create new articles and categories. Enjoy.</p>

@@ -1,0 +1,73 @@
+---
+title:  Extending Rublog with ERb
+layout: post
+---
+<p><a href="http://rubyforge.org/projects/rublog/">Rublog</a> is a great web site system and has many interesting features. The script works off the files on the file system and supports different file types including RDoc, HTML, and plain text. I wanted to extend Rublog to also support embedded Ruby in <code>.rhtml</code> files, and here is how I did it.</p>
+<p>I decided to use <a href="http://www.ruby-doc.org/stdlib/libdoc/erb/rdoc/">ERb</a> instead of <a href="http://www.modruby.net/">eRuby</a>. eRuby is a native library, while ERb is written in Ruby, which makes it slower. I would have chosen to use eRuby, but I couldn't find any documentation on how to use it from a Ruby script, so I decided to follow the examples I could find online that were using ERb. I assume there are better ways to implement this, but this is good enough for me (for now).</p>
+<p>Rublog makes supporting new file types easy. The first step is to create a new converter class. You'll need to inherit from the <code>BaseConverter</code> class. I followed the example of the <code>HtmlConverter</code> class that comes with Rublog. You can find the converter classes in the <code><em>rublog</em>/convertors/</code> directory. Here is my <code>RHtmlConvertor.rb</code> script:</p>
+<pre><code># The rhtml convertor reads a file and performs the ERb render.
+# Like the html converter, we look for a natural title.
+# If we can't find it, we use the first line (removing it
+# if it doesn't look like valid HTML)
+
+require 'erb'
+require 'BaseConvertor'
+
+class RHtmlConvertor &lt; BaseConvertor
+  handles "rhtml"
+
+  def convert_html(file_name, f, all_entries)
+    body  = f.read || ""
+    title = "Untitled"
+
+    if body =~ /&lt;title&gt;(..*?)&lt;\/title&gt;/m
+            title = $1
+    elsif body =~ /&lt;h1[^&gt;&lt;]*&gt;(.*?)&lt;\/h1&gt;/
+            title = $1
+    elsif body.sub!(/\A\s*([^\s&lt;].*)/, '')
+            title = $1
+    end
+
+    erb =  ERB.new(title)
+    title = erb.result
+    erb =  ERB.new(body)
+    body= erb.result
+
+    HTMLEntry.new(title, body, body, self)
+  end
+
+end</code></pre>
+<p>The next step is to add the new converter to your Rublog CGI script. Find where the <code>load_convertors</code> method is called and add the text <q>RHtml</q> to the list. You need to add it before the text <q>Html</q>, or else the <code>HtmlConverter.rd</code> script will handle your <code>.rhtml</code> files. You need to be aware of the order the converters are loaded because the converters don't look at the file extension, they simply match the end of the file name.</p>
+<p>Confused? Don't worry about it. Here is what the load_convertors line looks like in my CGI script:</p>
+<pre><code>RubLog::load_convertors(*%w{ RHtml RDoc Text Html })</code></pre>
+<p>That's it, you should be ready to go. Add the following text to a file with the <code>.rhtml</code> extension to your blog directory and watch the magic.</p>
+<pre><code>&lt;h1&gt;Testing ERb and RHTML files in Rublog&lt;/h1&gt;
+
+&lt;p&gt;This is just a test of supporting *.rhtml files in
+Rublog. This additional functionality will render the *.rhtml source
+with ERb and display the output.&lt;/p&gt;
+
+&lt;p&gt;For example, the following code is executed below:&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt;&amp;lt;% 5.times do %&amp;gt;Hello &amp;lt;% end %&amp;gt;Ruby!&amp;lt;/p&amp;gt;
+&amp;lt;ul&amp;gt;
+
+&amp;lt;li&amp;gt;Addition: &amp;lt;%= 1+2 %&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;Concatenation: &amp;lt;%= &amp;quot;cow&amp;quot; + &amp;quot;boy&amp;quot; %&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;&lt;% 5.times do %&gt;Hello &lt;% end %&gt;Ruby!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Addition: &lt;%= 1+2 %&gt;&lt;/li&gt;
+
+&lt;li&gt;Concatenation: &lt;%= "cow" + "boy" %&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;This concludes our test...&lt;/p&gt;</code></pre>
+<p>You may be asking yourself why this would be necessary, or even desired. To be honest part of why I wrote this was to see if I could do it, but I do see value in enabling a piece if web content with server-side functionality. It allows me to add new behavior without duplicating the navigation and presentation that Rublog gives you. At least, that's how I justified it. ;)</p>
