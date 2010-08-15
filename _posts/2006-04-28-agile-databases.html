@@ -1,0 +1,43 @@
+---
+title:	Agile Databases
+layout:	post
+---
+<p>I am not an expert on this subject, although I play one on the Internet.
+<a href="http://www.jasonmauer.com/">Jason</a> posted
+<a href="http://www.jasonmauer.com/EntryView.aspx?id=5ECDF2A0-68D4-45B9-B69F-48A84616420A">
+some thoughts</a> about the relatively light use of the data tier in a recent TDD 
+presentation he attended. Instead of writing the longest comment in the history 
+of his blog I thought I'd post my response here. The following is a brain dump only, 
+and subject to change as folks smarter than me correct me.</p>
+<p>Martin Fowler has an
+<a href="http://martinfowler.com/bliki/DatabaseStyles.html">article where he distinguishes</a> 
+between "application" databases and "integration" databases. To me this is the main 
+difference between traditional "enterprise" thinking and the Agile approach. Most 
+Agilistas (and the <a href="http://rubyonrails.org/">Ruby on Rails</a> framework) like the "application" view, and 
+every DBA I've ever known assumes the "integration" view. Here is what Martin Fowler 
+has to say about the latter:</p>
+<blockquote>
+<p>Integration databases end up with interfaces that have a large surface area and 
+limited abilities to separate interface from implementation. The resulting links 
+between applications and databases end up being brittle and thus difficult to change.</p>
+</blockquote>
+<p>That perfectly describes my life.</p>
+<p>I can't point to too many examples where I've actually reused stored procedures. 
+Database functions yes, stored procedures no. I either end up writing new stored 
+procedures for my new application, because the new application needs to access the 
+data differently, or I hack up the stored procedures to do things they weren't originally 
+designed for and effectively tightly couple my data and application tiers. In fact, 
+my opinion is that the current irrational exuberance over SOA is mostly an acknowledgement 
+of the fact that stored procedures make a shitty abstraction layer. But that's just 
+my opinion, and unlike
+<a href="http://www.comicbookresources.com/columns/archive.cgi?column=ofo">Erik 
+Larsen</a> I'm not that willing to concede I might be wrong. :)</p>
+<p>Rails takes the view that you should have your
+<a href="http://www.loudthinking.com/arc/000516.html">complexity in one place</a>, 
+and code is a much nicer place than the database. That is one of the reasons Rails 
+is called "opinionated software", because this world-view permeates the framework. 
+Can you use Rails with an "integration" database? Sure, but it will be harder. And 
+even though I have no idea exactly what SOA really, truly is, I'd investigate using 
+SOA before strapping Rails on top of a legacy database where stored procedures are 
+the only way to get or set data. So the "application" database approach is 
+different, but its different for a reason.</p>
