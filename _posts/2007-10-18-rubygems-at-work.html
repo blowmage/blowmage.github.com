@@ -1,6 +1,6 @@
 ---
-title:	Getting RubyGems to play nice at work
-layout:	post
+title:  Getting RubyGems to play nice at work
+layout: post
 ---
 <p>At work I'm on Windows and behind a proxy server. I recently wiped my workstation and started over. After I installed Ruby I found the gems command not working, again. The reason is that my proxy server requires a username and password, and open-uri doesn't pass them. (Supposedly because keeping your username and password in an environment variable isn't secure, but at work I don't care as much about apps snooping my environment variables.)</p>
 <p>To get things working I had to hack up open-uri a bit.  So I found the following code in <code>C:\ruby\lib\ruby\1.8\open-uri.rb</code></p>

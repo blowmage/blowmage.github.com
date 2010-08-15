@@ -1,6 +1,6 @@
 ---
-title:	The Rubification of C#
-layout:	post
+title:  The Rubification of C#
+layout: post
 ---
 <p><a href="http://chadmyers.com/Blog/">Chad Myers</a> gave me a nice little surprise by using my surname in his blog post <a href="http://chadmyers.com/Blog/archive/2007/12/15/moore-on-the-anonymous-delegate-approach.aspx">"Moore on the Anonymous Delegate Approach"</a> about an approach to make his statically-typed C# code more easily testable. I struggled with how best to respond because the subject of his code experiments really demonstrates some of the things I've been thinking about C#'s evolution for a while now. So while this isn't a direct response to his post, its something I've been wanting to say for a while now.</p>
 <p>Chad started out by showing how you can use anonymous delegates to encapsulate your logic, and then swap out the delegates in his test cases so he can verify the dependent objects work properly. So he is essentially swapping the implementation of the code his object has a reference to. The fly in the ointment is that only the original anonymous delegate can access all the internal data in his object, so once you swap out the object's original anonymous delegate, the object becomes ineffective. (Unless your logic is dead simple, like the kind you use when you are writing code demos.)</p>
