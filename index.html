@@ -2,17 +2,15 @@
 layout: default
 title:  coding with spice
 ---
-{% assign first_post = site.posts.first %}
-<div id="post">
-  <h2><a href="{{ first_post.url | replace:'.html','' }}">{{ first_post.title }}</a></h2>
-  <div class="date">published {{ first_post.date | date_to_string }}</div>
-  <div class="body">
-  {{ first_post.content }}
-  </div>
-  <div class="comments"><a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></div>
-</div>
-
-<p>Find more in my <a href="/annals">annals</a></p>
+<h1>blowmage</h1>
+<h3>Explore My Annals</h3>
+<ul id="annals">
+{% for post in site.posts %}
+  <li><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a>
+    <abbr>{{ post.date | date_to_string }}</abbr>
+    <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></li>
+{% endfor %}
+</ul>
 
 <script type="text/javascript">
 var disqus_shortname = 'blowmage';
