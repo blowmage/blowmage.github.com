@@ -2,47 +2,24 @@
 layout: default
 title:  coding with spice
 ---
-
-<h1 class="title">What the--?!</h1>
-<p>So, my hosting provider moved my account to a new server, and destroyed my Mephisto install. So I'm in the process of rebuilding my site and I'm not quite done yet. Sorry about this, I'll try to get this site back up as soon as I can.</p>
-
-<div style="text-align: center;">
-<a href="http://mtnwestrubyconf.org/2009/"
-  title="I'm attending MountainWest RubyConf 2009!">
-<img src="http://mtnwestrubyconf.org/2009/images/badges/organizer.png" 
-  width="250" height="200" border="0" 
-  alt="I'm attending MountainWest RubyConf 2009!">
-</a></div>
-
 {% assign first_post = site.posts.first %}
 <div id="post">
-  <h2><a href="{{ first_post.url }}">{{ first_post.title }}</a></h2>
+  <h2><a href="{{ first_post.url | replace:'.html','' }}">{{ first_post.title }}</a></h2>
   <div class="date">published {{ first_post.date | date_to_string }}</div>
   <div class="body">
   {{ first_post.content }}
   </div>
-  <div class="comments"><a href="{{ post.url }}#disqus_thread">Comments</a></div>
+  <div class="comments"><a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></div>
 </div>
 
-<hr />
+<hr>
 
-<h2>archive</h2>
+<h2>Explore My Annals</h2>
 <ul id="archive">
 {% for post in site.posts %}
-<li><a href="{{ post.url }}">{{ post.title }}</a><abbr>{{ post.date | date_to_string }}</abbr><a href="{{ post.url }}#disqus_thread">Comments</a></li>
+<li><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a><abbr>{{ post.date | date_to_string }}</abbr><a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></li>
 {% endfor %}
 </ul>
-
-<div class="quote">
-  <div class="quotation">
-    <blockquote>
-    <p>Punctuality is the virtue of the bored.</p>
-    </blockquote>
-  </div>
-  <div class="source">
-    Evelyn Waugh
-  </div>
-</div>
 
 <script type="text/javascript">
 var disqus_shortname = 'blowmage';
