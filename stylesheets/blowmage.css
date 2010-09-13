@@ -101,7 +101,7 @@ h2, h2 a, h2 em {
 }
 
 h3, h3 a, h3 em {
-	font: normal 36px/normal 'Broken15Regular', sans-serif;
+	font: normal 18px/27px 'Colaborate-MediumRegular', Arial, sans-serif;
 	text-decoration: none;
 	margin: 0;
 }
@@ -132,4 +132,47 @@ div#container {
 	margin-left: 50px;
 	margin-top: -20px;
 	font-weight: bold;
+}
+
+body#home {
+	background-color: #e87003;
+	color: #fffeff;
+	margin: 0 auto;
+	width: 760px;
+}
+
+body#home a {
+	color: #fffeff;
+}
+
+body#home section {
+	clear: both;
+	padding-top: 20px;
+}
+
+body#home section > div {
+	float: left;
+	width: 240px;
+	padding: 0;
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
+
+body#home section > div:first-child {
+	margin-left: 0;
+}
+
+body#home section > div#photo {
+	width: 500px;
+}
+
+body#home section > div h2 {
+	margin: 0;
+}
+
+body#home blockquote {
+	font: 16px/24px 'Colaborate-ThinRegular', Arial, sans-serif;
+	background-image: none;
+	margin: 0;
+	padding: 5px;
 }

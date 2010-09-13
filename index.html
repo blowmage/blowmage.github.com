@@ -2,15 +2,155 @@
 layout: home
 title:  "&#9760;"
 ---
-<h1>blowmage</h1>
-<h3>Explore My Annals</h3>
-<ul id="annals">
-{% for post in site.posts %}
-  <li><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a>
-    <abbr>{{ post.date | date_to_string }}</abbr>
-    <a href="{{ post.url | replace:'.html','' }}#comments">Comments</a></li>
-{% endfor %}
+<section>
+
+<div id="photo"><a href="http://www.flickr.com/photos/blowmage/4364019691/" title="whiskerino-056-4 by blowmage, on Flickr"><img src="http://farm3.static.flickr.com/2429/4364019691_1052f6a9a5.jpg" width="500" height="375" alt="whiskerino-056-4" /></a></div>
+
+<div id="blog">
+{% if site.posts.first %}
+<article>
+<h2><a href="{{ post.url | replace:'.html','' }}">{{ site.posts.first.title }}</a></h2>
+{{ site.posts.first.desc | textilize }}
+<p>Posted {{ site.posts.first.date | date_to_string }}. Would you like to know <a href="{{ post.url | replace:'.html','' }}">more</a>?</p>
+<p><a href="{{ post.url | replace:'.html','' }}#comments">Comments</a></p>
+<hr>
+<p>More bloggy stuff in the <a href="/archives" rel="archives">annals</a></p>
+</article>
+{% endif %}
+</div>
+
+</section>
+
+<section>
+
+<div id="about">
+<h2>About Me</h2>
+<p>My name is Mike Moore. I work for <a href="http://atti.com/">AT&amp;T Interactive</a> like to hack with Ruby. Sometimes I organize conferences like <a href="http://mtnwestrubyconf.org/">MountainWest RubyConf</a> and <a href="http://rubywebconf.org/">Ruby|Web Conference</a>. Other times I'll chat with folks on the <a href="http://rubiverse.com/">Rubiverse</a> podcast. But mostly I just chill with my family and try to stay out of trouble.</p>
+<ul>
+  <li>Email: <a href="mailto:mike@blowmage.com">mike@blowmage.com</a></li>
+  <li>Phone: <a href="tel:+1-801-541-8810" rel="tel">801.541.8810</a></li>
+  <li>Employer: <a href="http://atti.com/">AT&amp;T Interactive</a></li>
+  <li>On the side: <a href="http://humanecode.com/">HumaneCode</a></li>
 </ul>
+<p>What I do:</p>
+<ul>
+  <li><a href="http://rubiverse.com/">Rubiverse</a></li>
+  <li><a href="http://tumblr.blowmage.com/">tumblowmage</a></li>
+  <li><a href="http://status.blowmage.com/">Daily Status</a></li>
+  <li><a href="http://mtnwestrubyconf.org/">MountainWest RubyConf</a></li>
+  <li><a href="http://rubywebconf.org/">Ruby|Web Conference</a></li>
+</ul>
+<p>Find me online:</p>
+<ul>
+  <li><a href="http://twitter.com/blowmage" rel="external">Twitter</a></li>
+  <li><a href="http://facebook.com/blowmage" rel="external">Facebook</a></li>
+  <li><a href="http://linkedin.com/in/mikemoore" rel="external">Linkedin</a></li>
+  <li><a href="http://delicious.com/blowmage" rel="external">Delicious</a></li>
+  <li><a href="http://flickr.com/blowmage" rel="external">Flickr</a></li>
+  <li><a href="http://github.com/blowmage" rel="external">GitHub</a></li>
+  <li><a href="http://workingwithrails.com/person/6736-mike-moore" rel="external">Working With Rails</a></li>
+  <li><a href="http://railsdeveloper.com/d/blowmage" rel="external">Rails Developer</a></li>
+</ul>
+</div>
+
+<div id="twitter">
+<h2>Twitter</h2>
+<div id="tweets"></div>
+<p><a href="http://twitter.com/blowmage" rel="external">follow me on twitter</a></p>
+</div>
+
+<div id="github">
+<article>
+<h2>GitHub</h2>
+<div id="commits"></div>
+<p><a href="http://github.com/blowmage" rel="external">follow me on github</a></p>
+</article>
+</div>
+
+</section>
+
+<!-- <section>
+
+<div id="delicious">
+<article>
+<h2>delicious</h2>
+<p>DESC</p>
+<p><a href="http://delicious.com/blowmage" rel="external">follow me on delicious</a></p>
+</article>
+</div>
+
+<div id="github">
+<article>
+<h2>github</h2>
+<p>DESC</p>
+<p><a href="http://github.com/blowmage" rel="external">follow me on github</a></p>
+</article>
+</div>
+
+<div id="delicious">
+<article>
+<h2>delicious</h2>
+<p>DESC</p>
+<p><a href="http://delicious.com/blowmage" rel="external">follow me on delicious</a></p>
+</article>
+</div>
+
+</section>
+
+
+More
+* tumblowmage
+* daily status
+* facebook
+* delicious
+* flickr
+* rails developers (?)
+* working with rails (?) -->
+
+
+<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA1L6Yf2GFj_z17E4XFx23SBQ1b9kqrSvR7r2JWshKIOJP3oJvrhRZwBs4yqciLMZw1gATx5kRTiGbBQ "></script>
+<script type="text/javascript">
+
+google.load("feeds", "1");
+
+function initialize() {
+  var twitter = new google.feeds.Feed('http://twitter.com/statuses/user_timeline/57753.rss');
+  twitter.setNumEntries(5);
+  twitter.load(function(result) {
+    if (!result.error) {
+      var tweets = document.getElementById("tweets");
+      for (var i = 0; i < result.feed.entries.length; i++) {
+        var entry = result.feed.entries[i];
+        var tweet = document.createElement("p");
+        var href = document.createElement("a");
+        href.appendChild(document.createTextNode(entry.content));
+        href.href = entry.link;
+        tweet.appendChild(href);
+        tweets.appendChild(tweet);
+      }
+    }
+  });
+  var github = new google.feeds.Feed('http://github.com/blowmage.atom');
+  github.setNumEntries(10);
+  github.load(function(result) {
+    if (!result.error) {
+      var commits = document.getElementById("commits");
+      for (var i = 0; i < result.feed.entries.length; i++) {
+        var entry = result.feed.entries[i];
+        var commit = document.createElement("p");
+        var href = document.createElement("a");
+        href.appendChild(document.createTextNode(entry.title));
+        href.href = entry.link;
+        commit.appendChild(href);
+        commits.appendChild(commit);
+      }
+    }
+  });
+
+}
+google.setOnLoadCallback(initialize);
+
+</script>
 
 <script type="text/javascript">
 var disqus_shortname = 'blowmage';

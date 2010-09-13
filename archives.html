@@ -1,0 +1,22 @@
+---
+layout: default
+title:  "&#9760;"
+---
+<h1>blowmage</h1>
+<h3>Explore My Annals</h3>
+<ul id="annals">
+{% for post in site.posts %}
+  <li><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a>
+    <abbr>{{ post.date | date_to_string }}</abbr>
+    <a href="{{ post.url | replace:'.html','' }}#comments">Comments</a></li>
+{% endfor %}
+</ul>
+
+<script type="text/javascript">
+var disqus_shortname = 'blowmage';
+(function () {
+  var s = document.createElement('script'); s.async = true;
+  s.src = 'http://disqus.com/forums/blowmage/count.js';
+  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+}());
+</script>
