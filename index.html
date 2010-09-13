@@ -8,7 +8,7 @@ title:  "&#9760;"
 {% for post in site.posts %}
   <li><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a>
     <abbr>{{ post.date | date_to_string }}</abbr>
-    <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></li>
+    <a href="{{ post.url | replace:'.html','' }}#comments">Comments</a></li>
 {% endfor %}
 </ul>
 
