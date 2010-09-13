@@ -47,55 +47,55 @@
 }
 
 body {
-	font: 18px/27px 'Colaborate-LightRegular', Arial, sans-serif;
+	font: 16px/24px 'Colaborate-LightRegular', Arial, sans-serif;
 }
 
 em {
-	font: normal 18px/27px 'Colaborate-MediumRegular', Arial, sans-serif;
+	font: normal 16px/24px 'Colaborate-MediumRegular', Arial, sans-serif;
 	background-color: #e87003;
 	color: #fff;
 }
 
 strong {
-	font: normal 18px/27px 'Colaborate-BoldRegular', Arial, sans-serif;
+	font: normal 16px/24px 'Colaborate-BoldRegular', Arial, sans-serif;
 }
 
 blockquote {
-	font: 18px/27px 'Colaborate-ThinRegular', Arial, sans-serif;
+	font: 16px/24px 'Colaborate-ThinRegular', Arial, sans-serif;
 	padding: 20px;
 	background-image: url('/images/quotes-open.png');
 	background-repeat: no-repeat;
 }
 
 blockquote a {
-	font: 18px/27px 'Colaborate-LightRegular', Arial, sans-serif;
+	font: 16px/24px 'Colaborate-LightRegular', Arial, sans-serif;
 }
 
 a {
-	font: normal 18px/27px 'Colaborate-MediumRegular', Arial, sans-serif;
+	font: normal 16px/24px 'Colaborate-MediumRegular', Arial, sans-serif;
 	color: #e87003;
 	text-decoration: none;
 }
 
 ul li {
-	font-size: 18px;
+	font-size: 16px;
 	line-height: normal;
 }
 
 ul li a {
-	font-size: 18px;
+	font-size: 16px;
 	line-height: normal;
 }
 
 h1, h1 a, h1 em {
 	text-shadow: #000 2px 2px spx;
-	font: normal 96px/normal 'Broken15Regular', sans-serif;
+	font: normal 64px/normal 'Broken15Regular', sans-serif;
 	text-decoration: none;
 	margin: 0;
 }
 
 h2, h2 a, h2 em {
-	font: normal 64px/normal 'Broken15Regular', sans-serif;
+	font: normal 48px/normal 'Broken15Regular', sans-serif;
 	text-decoration: none;
 	margin: 0;
 }
