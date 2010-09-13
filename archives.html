@@ -2,15 +2,14 @@
 layout: default
 title:  "&#9760;"
 ---
-<h1>blowmage</h1>
-<h3>Explore My Annals</h3>
-<ul id="annals">
+<h1>Explore blowmage's Annals</h1>
 {% for post in site.posts %}
-  <li><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a>
-    <abbr>{{ post.date | date_to_string }}</abbr>
-    <a href="{{ post.url | replace:'.html','' }}#comments">Comments</a></li>
+  <article>
+    <h2><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h2>
+    {{ post.desc | textilize }}
+    <p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#comments">Comments</a></p>
+  </article>
 {% endfor %}
-</ul>
 
 <script type="text/javascript">
 var disqus_shortname = 'blowmage';
