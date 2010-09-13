@@ -1,6 +1,7 @@
 ---
 title:  Installing Typo on Shared Hosting
 layout: post
+desc:   I ran Typo for a while. Seems like needless complexity now, but at the time it was so hawt!
 ---
 <p>Okay, I've succumbed to the peer pressure, I've installed <a href="http://www.rubyonrails.org/">Ruby on Rails</a> and I'll even use it for this site. As I said earlier, my hosting provider is <a href="http://www.hostingplex.com/redir.php?aff=blowmage">HostingPlex</a>, and is not yet well suited to host Rails applications because <a href="http://modruby.net/">mod_ruby</a> and <a href="http://fastcgi.com/">FastCGI</a> are not installed with a shared-hosting account. I've been begging for first class Ruby support, but so far nothing has come of it. Of course, folks could always <a href="mailto:sales@hostingplex.com?subject=Ruby and Rails Support?">contact HostingPlex</a> and ask that they support Ruby and Rails in the future.</p>
 <p>I've used and said nice things about <a href="http://rubyforge.org/projects/rublog/">Rublog</a> in the past, but the reason I've decided to move from Rublog is the exact reason I chose it in the first place. Rublog works off the files on the file system, and not a database. I've found that if I need to make a change to an older article, the file's timestamp and subsequently the article's URL is changed. I've discovered that I like to correct spelling and grammar mistakes, and that ended up changing the chronological order of my site.</p>
@@ -29,7 +30,7 @@ require "/home/<em>blowmage</em>/typo-2.5.5/config/environment"</code></pre>
 ActionController::Base.page_cache_extension = ".html"</code></pre>
 <p>Second, we need to tell Typo's <code>PageCache</code> class where to remove the cached entries from. (I believe this is a flaw in the current design, and I have opened a <a href="http://typo.leetsoft.com/trac/ticket/328">case</a>. As of this writing, the case has not yet been assigned.) So change the <code>typo-2.5.5/app/models/page_cache.rb</code> file to the following:</p>
 <pre><code>class PageCache &lt; ActiveRecord::Base
-  
+
   cattr_accessor :public_path
 #  @@public_path = RAILS_ROOT + "/public"
   @@public_path = "/home/<em>blowmage</em>/public_html"</code></pre>

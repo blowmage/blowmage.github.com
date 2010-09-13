@@ -1,6 +1,7 @@
 ---
 title:  Installing Ruby on Shared Hosting
 layout: post
+desc:   I attempt to show that installing Ruby on shared hosting doesn't have to suck. I think I failed.
 ---
 <p>The hosting provider for this site is <a href="http://www.hostingplex.com/redir.php?aff=blowmage">HostingPlex</a>. HostingPlex doesn't support <a href="http://ruby-lang.org/">Ruby</a> <q>out-of-the-box</q>, which is unfortunate because Ruby is gaining momentum and has a lot of mind share with web developers right now. I've made the following modifications to my account in order to run Ruby and I hope you find them useful. Hopefully the steps I tool will translate to other hosting providers and will be useful to others.</p>
 <p>Much of this information is a direct result of an excellent <a href="http://www.viarails.net/articles/2005/04/22/installing-typo-on-a-freeshell-org-account">article</a> on <a href="http://www.viarails.net/">Wesley Moxam</a>'s blog. I am going to initially focus on installing and using Ruby and Rublog, and not necessarily <a href="http://rubyonrails.com/">Rails</a>. Although once Ruby is installed and configured, installing and using Rails shouldn't be too hard to do. However, HostingPlex is not well suited to Rails hosting (yet) because some server-side configurations such as <a href="http://modruby.net/">mod_ruby</a> and <a href="http://fastcgi.com/">FastCGI</a> are very difficult or impossible to install with a shared-hosting account. Hopefully HostingPlex will change their mind and start supporting Ruby and Rails in the future.</p>
@@ -22,13 +23,13 @@ $ ./configure --prefix=$HOME/local &amp;&amp; make &amp;&amp; make install</code
 <pre><code>PATH=$HOME/local/bin:$PATH</code></pre>
 <p>Now every time you connect to the server through the shell, your account will look in your <code>local</code> directory for Ruby.</p>
 <p>Let's test this! Create a new file in your <code>public_html</code> directory named <code>hello.cgi</code>. The file should include the following lines:</p>
-<pre><code>#!/home/<i>blowmage</i>/local/bin/ruby 
-# hello.cgi 
-puts "content-type: text/html" 
-puts 
-puts "&lt;html&gt;" 
-puts "&lt;body&gt;" 
-puts "&lt;h1&gt;Hello Ruby!&lt;/h1&gt;" 
-puts "&lt;/body&gt;" 
+<pre><code>#!/home/<i>blowmage</i>/local/bin/ruby
+# hello.cgi
+puts "content-type: text/html"
+puts
+puts "&lt;html&gt;"
+puts "&lt;body&gt;"
+puts "&lt;h1&gt;Hello Ruby!&lt;/h1&gt;"
+puts "&lt;/body&gt;"
 puts "&lt;/html&gt;"</code></pre>
 <p>The home directory for my account on HostingPlex is <code>/home/<i>blowmage</i></code>. You'll want to change the first line of your script from <code>/home/<i>blowmage</i></code> to the path to your account's home directory. If you do not, then the script won't know where to find Ruby and the script will fail. If you see a message that displays <q>Hello Ruby!</q> then you have officially installed Ruby, congratulations.</p>
