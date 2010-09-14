@@ -62,7 +62,7 @@ title:  "::blowmage::"
 <div id="github">
 <article>
 <h2>GitHub</h2>
-<div id="commits"></div>
+<div id="commits">Loading...</div>
 <p><a href="http://github.com/blowmage" rel="external">follow me on github</a></p>
 </article>
 </div>
@@ -130,27 +130,12 @@ function initialize() {
       }
     }
   });
-  var github = new google.feeds.Feed('http://github.com/blowmage.atom');
-  github.setNumEntries(10);
-  github.load(function(result) {
-    if (!result.error) {
-      var commits = document.getElementById("commits");
-      for (var i = 0; i < result.feed.entries.length; i++) {
-        var entry = result.feed.entries[i];
-        var commit = document.createElement("p");
-        var href = document.createElement("a");
-        href.appendChild(document.createTextNode(entry.title));
-        href.href = entry.link;
-        commit.appendChild(href);
-        commits.appendChild(commit);
-      }
-    }
-  });
-
 }
 google.setOnLoadCallback(initialize);
 
 </script>
+
+<script type="text/javascript" src="http://github.com/blowmage.json?callback=loadGitHubCommits"></script>
 
 <script type="text/javascript">
 var disqus_shortname = 'blowmage';
