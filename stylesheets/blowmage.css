@@ -48,6 +48,8 @@
 
 body {
 	font: 16px/24px 'Colaborate-LightRegular', Arial, sans-serif;
+	width: 640px;
+	margin: 0 auto;
 }
 
 em {
@@ -104,12 +106,6 @@ h3, h3 a, h3 em {
 	font: normal 18px/27px 'Colaborate-MediumRegular', Arial, sans-serif;
 	text-decoration: none;
 	margin: 0;
-}
-
-div#container {
-	width: 640px;
-	margin-right: auto;
-	margin-left: auto;
 }
 
 .quote {
