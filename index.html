@@ -115,7 +115,7 @@ google.load("feeds", "1");
 
 function initialize() {
   var twitter = new google.feeds.Feed('http://twitter.com/statuses/user_timeline/57753.rss');
-  twitter.setNumEntries(5);
+  twitter.setNumEntries(6);
   twitter.load(function(result) {
     if (!result.error) {
       var tweets = document.getElementById("tweets");
