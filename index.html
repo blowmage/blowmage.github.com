@@ -55,7 +55,7 @@ title:  "::blowmage::"
 
 <div id="twitter">
 <h2>Twitter</h2>
-<div id="tweets"></div>
+<div id="tweets">Loading...</div>
 <p><a href="http://twitter.com/blowmage" rel="external">follow me on twitter</a></p>
 </div>
 
@@ -107,35 +107,8 @@ More
 * rails developers (?)
 * working with rails (?) -->
 
-
-<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAA1L6Yf2GFj_z17E4XFx23SBQ1b9kqrSvR7r2JWshKIOJP3oJvrhRZwBs4yqciLMZw1gATx5kRTiGbBQ "></script>
-<script type="text/javascript">
-
-google.load("feeds", "1");
-
-function initialize() {
-  var twitter = new google.feeds.Feed('http://twitter.com/statuses/user_timeline/57753.rss');
-  twitter.setNumEntries(6);
-  twitter.load(function(result) {
-    if (!result.error) {
-      var tweets = document.getElementById("tweets");
-      for (var i = 0; i < result.feed.entries.length; i++) {
-        var entry = result.feed.entries[i];
-        var tweet = document.createElement("p");
-        var href = document.createElement("a");
-        href.appendChild(document.createTextNode(entry.content));
-        href.href = entry.link;
-        tweet.appendChild(href);
-        tweets.appendChild(tweet);
-      }
-    }
-  });
-}
-google.setOnLoadCallback(initialize);
-
-</script>
-
-<script type="text/javascript" src="http://github.com/blowmage.json?callback=loadGitHubCommits"></script>
+<script src="http://twitter.com/status/user_timeline/blowmage.json?callback=loadTwitterTweets" type="text/javascript" charset="utf-8"></script>
+<script src="http://github.com/blowmage.json?callback=loadGitHubCommits" type="text/javascript" charset="utf-8"></script>
 
 <script type="text/javascript">
 var disqus_shortname = 'blowmage';

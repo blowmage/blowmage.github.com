@@ -170,6 +170,28 @@ body#home section > div h2 {
 	margin: 0;
 }
 
+body#home div.tweet {
+	margin: 16px 0px;
+}
+
+body#home div.tweet blockquote {
+	font: normal 16px/24px 'Colaborate-MediumRegular', Arial, sans-serif;
+	background-image: none;
+	margin: 0;
+	padding: 0;
+}
+
+body#home div.tweet p {
+	font: 16px/24px 'Colaborate-LightRegular', Arial, sans-serif;
+	text-align: right;
+	margin: 0;
+	padding: 0;
+}
+
+body#home div.tweet p a {
+	font: 16px/24px 'Colaborate-LightRegular', Arial, sans-serif;
+}
+
 body#home div.commit {
 	margin: 16px 0px;
 }
