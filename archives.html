@@ -7,7 +7,7 @@ title:  "::blowmage:: Archives"
   <article>
     <h2><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h2>
     {{ post.desc | textilize }}
-    <p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#comments">Comments</a></p>
+    <p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
   </article>
 {% endfor %}
 
