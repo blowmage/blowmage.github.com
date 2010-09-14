@@ -7,12 +7,12 @@ title:  "::blowmage::"
 <div id="photo"><a href="http://www.flickr.com/photos/blowmage/4364019691/" title="whiskerino-056-4 by blowmage, on Flickr"><img src="http://farm3.static.flickr.com/2429/4364019691_1052f6a9a5.jpg" width="500" height="375" alt="whiskerino-056-4" /></a></div>
 
 <div id="blog">
-{% if site.posts.first %}
+{% if site.posts.first.url %}
 <article>
-<h2><a href="{{ post.url | replace:'.html','' }}">{{ site.posts.first.title }}</a></h2>
+<h2><a href="{{ site.posts.first.url | replace:'.html','' }}">{{ site.posts.first.title }}</a></h2>
 {{ site.posts.first.desc | textilize }}
 <p>Posted {{ site.posts.first.date | date_to_string }}. Would you like to know <a href="{{ post.url | replace:'.html','' }}">more</a>?</p>
-<p><a href="{{ post.url | replace:'.html','' }}#comments">Comments</a></p>
+<p><a href="{{ site.posts.first.url | replace:'.html','' }}#comments">Comments</a></p>
 <hr>
 <p>More bloggy stuff in the <a href="/archives" rel="archives">annals</a></p>
 </article>
