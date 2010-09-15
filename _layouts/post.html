@@ -1,10 +1,29 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{ page.title }}</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="author" content="Mike Moore">
+  <link rel="alternate" href="http://feeds.feedburner.com/blowmage" title="feed">
+  <link rel="stylesheet" href="/stylesheets/blowmage.css" media="screen" title="default" charset="utf-8">
+  <link rel="stylesheet" href="/stylesheets/textmate.css" charset="utf-8">
+  <link rel="stylesheet" href="/stylesheets/syntax.css" charset="utf-8">
+</head>
+
+<body id="post">
+
 <article>
   <h1>{{ page.title }}</h1>
   <section id="content">
   {{ content }}
+  </section>
+  <section id="tags">
+    <ul>
+    {% for tag in page.tags %}
+      <li><a href="/tags/{{ tag }}">{{ tag }}</a></li>
+    {% endfor %}
+    </ul>
   </section>
   <section id="comments">
     <div id="disqus_thread"></div>
@@ -27,3 +46,10 @@ layout: default
     </nav>
   </footer>
 </div>
+
+<script src="http://www.google-analytics.com/urchin.js"></script>
+<script>_uacct = "UA-73219-1"; urchinTracker();</script>
+
+</body>
+
+</htmL>

@@ -196,3 +196,14 @@ body#home div.commit ul {
 	margin: 0;
 	padding: 0 0 0 16px;
 }
+
+body#post section#tags ul {
+	margin: 0;
+	padding: 0;
+}
+
+body#post section#tags ul li {
+	display: inline;
+	list-style-type: none;
+	margin-right: 5px;
+}
