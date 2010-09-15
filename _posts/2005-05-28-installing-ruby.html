@@ -2,6 +2,8 @@
 title:  Installing Ruby on Shared Hosting
 layout: post
 desc:   I attempt to show that installing Ruby on shared hosting doesn't have to suck. I think I failed.
+tags:
+  - ruby
 ---
 <p>The hosting provider for this site is <a href="http://www.hostingplex.com/redir.php?aff=blowmage">HostingPlex</a>. HostingPlex doesn't support <a href="http://ruby-lang.org/">Ruby</a> <q>out-of-the-box</q>, which is unfortunate because Ruby is gaining momentum and has a lot of mind share with web developers right now. I've made the following modifications to my account in order to run Ruby and I hope you find them useful. Hopefully the steps I tool will translate to other hosting providers and will be useful to others.</p>
 <p>Much of this information is a direct result of an excellent <a href="http://www.viarails.net/articles/2005/04/22/installing-typo-on-a-freeshell-org-account">article</a> on <a href="http://www.viarails.net/">Wesley Moxam</a>'s blog. I am going to initially focus on installing and using Ruby and Rublog, and not necessarily <a href="http://rubyonrails.com/">Rails</a>. Although once Ruby is installed and configured, installing and using Rails shouldn't be too hard to do. However, HostingPlex is not well suited to Rails hosting (yet) because some server-side configurations such as <a href="http://modruby.net/">mod_ruby</a> and <a href="http://fastcgi.com/">FastCGI</a> are very difficult or impossible to install with a shared-hosting account. Hopefully HostingPlex will change their mind and start supporting Ruby and Rails in the future.</p>
