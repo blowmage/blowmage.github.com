@@ -1,0 +1,10 @@
+---
+layout: default
+title:  "::blowmage:: Tags"
+---
+<h1>Explore My Annals by Keyword</h1>
+<ul class="tags">
+{% for tag_ in @site.tags %}{% capture tag %}{{ tag_ | first }}{% endcapture %}
+  <li><a href="/tags/{{ tag }}">{{ tag }}</a> - {{ site.tags[tag] | size }} posts</li>
+{% endfor %}
+</ul>
