@@ -2,11 +2,13 @@
 layout: home
 title:  "::blowmage::"
 ---
-<section>
+<div>
 
-<div id="photo"><a href="http://www.flickr.com/photos/blowmage/4364019691/" title="whiskerino-056-4 by blowmage, on Flickr"><img src="http://farm3.static.flickr.com/2429/4364019691_1052f6a9a5.jpg" width="500" height="375" alt="whiskerino-056-4" /></a></div>
+<section id="photo">
+<a href="http://www.flickr.com/photos/blowmage/4364019691/" title="whiskerino-056-4 by blowmage, on Flickr"><img src="http://farm3.static.flickr.com/2429/4364019691_1052f6a9a5.jpg" width="500" height="375" alt="whiskerino-056-4" /></a>
+</section>
 
-<div id="blog">
+<section id="blog">
 {% if site.posts.first.url %}
 <article>
 <h2><a href="{{ site.posts.first.url | replace:'.html','' }}">{{ site.posts.first.title }}</a></h2>
@@ -16,13 +18,13 @@ title:  "::blowmage::"
 <p><em>Find bloggy stuff in my <a href="/archives" rel="archives">annals</a></em></p>
 </article>
 {% endif %}
-</div>
-
 </section>
 
-<section>
+</div>
 
-<div id="about">
+<div>
+
+<section id="about">
 <h2>About Me</h2>
 <p>My name is Mike Moore. I work for <a href="http://atti.com/">AT&amp;T Interactive</a> and I like to hack with Ruby. Sometimes I organize conferences like <a href="http://mtnwestrubyconf.org/">MountainWest RubyConf</a> and <a href="http://rubywebconf.org/">Ruby|Web Conference</a>. Other times I'll chat with folks on the <a href="http://rubiverse.com/">Rubiverse</a> podcast. But mostly I just chill with my family and try to stay out of trouble.</p>
 <ul>
@@ -50,23 +52,21 @@ title:  "::blowmage::"
   <li><a href="http://workingwithrails.com/person/6736-mike-moore" rel="external">Working With Rails</a></li>
   <li><a href="http://railsdeveloper.com/d/blowmage" rel="external">Rails Developer</a></li>
 </ul>
-</div>
+</section>
 
-<div id="twitter">
+<section id="twitter">
 <h2>Twitter</h2>
 <div id="tweets">Loading...</div>
 <p><a href="http://twitter.com/blowmage" rel="external">follow me on twitter</a></p>
-</div>
+</section>
 
-<div id="github">
-<article>
+<section id="github">
 <h2>GitHub</h2>
 <div id="commits">Loading...</div>
 <p><a href="http://github.com/blowmage" rel="external">follow me on github</a></p>
-</article>
-</div>
-
 </section>
+
+</div>
 
 <!--
 Yes, I am making fun of you here. Deal with it.

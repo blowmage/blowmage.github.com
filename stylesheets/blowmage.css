@@ -52,6 +52,11 @@ body {
 	margin: 0 auto;
 }
 
+img {
+	padding: 0;
+	border-style: none;
+}
+
 em {
 	font: normal 16px/24px 'Colaborate-MediumRegular', Arial, sans-serif;
 	background-color: #e87003;
@@ -140,14 +145,17 @@ body#home {
 }
 
 body#home h1 {
+	margin: 0;
 	text-shadow: #000 3px 3px 3px;
 }
 
 body#home h2 {
+	margin: 0;
 	text-shadow: #000 2px 2px 2px;
 }
 
 body#home h3 {
+	margin: 0;
 	text-shadow: #000 1px 1px 1px;
 }
 
@@ -155,34 +163,32 @@ body#home a {
 	color: #fff;
 }
 
-body#home section {
+body#home > div {
 	clear: both;
-	padding-top: 20px;
+	margin-top: 20px;
+	overflow: hidden;
 }
 
-body#home section > div {
+body#home > div > section {
 	float: left;
 	width: 240px;
 	padding: 0;
-	margin-left: 20px;
-	margin-bottom: 20px;
+	margin: 0 0 0 20px;
 }
 
-body#home section > div:first-child {
-	margin-left: 0;
-}
-
-body#home section > div#photo {
+body#home > div > section#photo {
 	width: 500px;
 	height: 375px;
+	margin-left: 0;
 	-moz-box-shadow: 5px 5px 5px #000;
 	-webkit-box-shadow: 5px 5px 5px #000;
 	box-shadow: 5px 5px 5px #000;
 }
 
-body#home section > div h2 {
-	margin: 0;
+body#home > div > section#about {
+	margin-left: 0;
 }
+
 
 body#home div.tweet {
 	margin: 16px 0px;
