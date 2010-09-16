@@ -135,7 +135,8 @@ body#home {
 	color: #fff;
 	margin: 0 auto;
 	width: 760px;
-	text-shadow: #000 0px 1px 1px;
+	font: 16px/24px 'Colaborate-RegularRegular', Arial, sans-serif;
+	text-shadow: #000 1px 1px 1px;
 }
 
 body#home h1 {
@@ -195,14 +196,9 @@ body#home div.tweet blockquote {
 }
 
 body#home div.tweet p {
-	font: 16px/24px 'Colaborate-LightRegular', Arial, sans-serif;
 	text-align: right;
 	margin: 0;
 	padding: 0;
-}
-
-body#home div.tweet p a {
-	font: 16px/24px 'Colaborate-LightRegular', Arial, sans-serif;
 }
 
 body#home div.commit {
