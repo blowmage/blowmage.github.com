@@ -23,13 +23,17 @@ $ ./configure --prefix=$HOME/local &amp;&amp; make &amp;&amp; make install</code
 <pre><code>PATH=$HOME/local/bin:$PATH</code></pre>
 <p>Now every time you connect to the server through the shell, your account will look in your <code>local</code> directory for Ruby.</p>
 <p>Let's test this! Create a new file in your <code>public_html</code> directory named <code>hello.cgi</code>. The file should include the following lines:</p>
-<pre><code>#!/home/<i>blowmage</i>/local/bin/ruby
+
+{% highlight yaml linenos %}
+#!/home/blowmage/local/bin/ruby
 # hello.cgi
 puts "content-type: text/html"
 puts
-puts "&lt;html&gt;"
-puts "&lt;body&gt;"
-puts "&lt;h1&gt;Hello Ruby!&lt;/h1&gt;"
-puts "&lt;/body&gt;"
-puts "&lt;/html&gt;"</code></pre>
+puts "<html>"
+puts "<body>"
+puts "<h1>Hello Ruby!</h1>"
+puts "</body>"
+puts "</html>"
+{% endhighlight %}
+
 <p>The home directory for my account on HostingPlex is <code>/home/<i>blowmage</i></code>. You'll want to change the first line of your script from <code>/home/<i>blowmage</i></code> to the path to your account's home directory. If you do not, then the script won't know where to find Ruby and the script will fail. If you see a message that displays <q>Hello Ruby!</q> then you have officially installed Ruby, congratulations.</p>
