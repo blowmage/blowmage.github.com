@@ -1,55 +1,30 @@
-@font-face {
-	font-family: 'Broken15Regular';
-	src: url('fonts/broken15-webfont.eot');
-	src: local('☺'), url('fonts/broken15-webfont.woff') format('woff'), url('fonts/broken15-webfont.ttf') format('truetype'), url('fonts/broken15-webfont.svg#webfont6RtiFO8n') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Colaborate-ThinRegular';
-	src: url('fonts/ColabThi-webfont.eot');
-	src: local('☺'), url('fonts/ColabThi-webfont.woff') format('woff'), url('fonts/ColabThi-webfont.ttf') format('truetype'), url('fonts/ColabThi-webfont.svg#webfontcrb0Yhf3') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Colaborate-LightRegular';
-	src: url('fonts/ColabLig-webfont.eot');
-	src: local('☺'), url('fonts/ColabLig-webfont.woff') format('woff'), url('fonts/ColabLig-webfont.ttf') format('truetype'), url('fonts/ColabLig-webfont.svg#webfontrw6WOifO') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Colaborate-RegularRegular';
-	src: url('fonts/ColabReg-webfont.eot');
-	src: local('☺'), url('fonts/ColabReg-webfont.woff') format('woff'), url('fonts/ColabReg-webfont.ttf') format('truetype'), url('fonts/ColabReg-webfont.svg#webfont7n8htCD6') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Colaborate-MediumRegular';
-	src: url('fonts/ColabMed-webfont.eot');
-	src: local('☺'), url('fonts/ColabMed-webfont.woff') format('woff'), url('fonts/ColabMed-webfont.ttf') format('truetype'), url('fonts/ColabMed-webfont.svg#webfontpFO0A3fx') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Colaborate-BoldRegular';
-	src: url('fonts/ColabBol-webfont.eot');
-	src: local('☺'), url('fonts/ColabBol-webfont.woff') format('woff'), url('fonts/ColabBol-webfont.ttf') format('truetype'), url('fonts/ColabBol-webfont.svg#webfontDTEOBeAk') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
+/* @override http://localhost:4000/stylesheets/blowmage.css */
 
 body {
-	font: 16px/24px 'Colaborate-LightRegular', Arial, sans-serif;
-	width: 640px;
-	margin: 0 auto;
+	font: 19px/24px Georgia, "Times New Roman", seriff;
+	width: 720px;
+	margin: 8px auto;
+	background-color: #eee8d5;
+	color: #657b83;
+}
+
+h1, h2, h3, em, strong {
+	color: #586e75;
+}
+
+h1 {
+	font-size: 29px;
+	line-height: 32px;
+}
+
+h2 {
+	font-size: 25px;
+	line-height: 32px;
+}
+
+h3 {
+	font-size: 21px;
+	line-height: 24px;
 }
 
 img {
@@ -58,126 +33,113 @@ img {
 }
 
 em {
-	font: normal 16px/24px 'Colaborate-MediumRegular', Arial, sans-serif;
-	background-color: #e87003;
-	color: #fff;
+	font-weight: bold;
+	font-style: italic;
 }
 
 strong {
-	font: normal 16px/24px 'Colaborate-BoldRegular', Arial, sans-serif;
+	font-weight: bold;
 }
 
 blockquote {
-	font: 16px/24px 'Colaborate-ThinRegular', Arial, sans-serif;
-	padding: 20px;
+	padding: 16px;
 	background-image: url('/images/quotes-open.png');
 	background-repeat: no-repeat;
 }
 
-blockquote a {
-	font: 16px/24px 'Colaborate-LightRegular', Arial, sans-serif;
-}
-
 a {
-	font: normal 16px/24px 'Colaborate-MediumRegular', Arial, sans-serif;
-	color: #e87003;
+	color: #cb4b16;
 	text-decoration: none;
+	font-weight: bold;
 }
 
 ul li {
-	font-size: 16px;
 	line-height: normal;
 }
 
-ul li a {
-	font-size: 16px;
-	line-height: normal;
-}
-
-h1, h1 a, h1 em {
-	text-shadow: #000 2px 2px spx;
-	font: normal 64px/normal 'Broken15Regular', sans-serif;
-	text-decoration: none;
-	margin: 0;
-}
-
-h2, h2 a, h2 em {
-	font: normal 48px/normal 'Broken15Regular', sans-serif;
-	text-decoration: none;
-	margin: 0;
-}
-
-h3, h3 a, h3 em {
-	font: normal 18px/27px 'Colaborate-MediumRegular', Arial, sans-serif;
-	text-decoration: none;
-	margin: 0;
+article {
+	background-color: #fdf6e3;
+	padding: 8px;
 }
 
 code {
-	font: 13px Menlo, Monaco, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, mono; }
+	font-family: Menlo, Monaco, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", Courier, mono;
 }
 
 .quote {
-	margin: 20px;
+	margin: 16px;
 	background-position: left top;
 	background-image: url('/images/quotes-open.png');
 	background-repeat: no-repeat;
 }
 
 .quote .quotation {
-	font-size: 1.2em;
+	font-size: 27px;
 	background-position: right bottom;
 	background-image: url('/images/quotes-close.png');
 	background-repeat: no-repeat;
-	min-height: 28px;
-	margin-right: 20px;
+	min-height: 32px;
+	margin-right: 16px;
 }
 
 .quote .source {
-	margin-left: 50px;
-	margin-top: -20px;
+	margin-left: 48px;
+	margin-top: -16px;
 	font-weight: bold;
 }
 
+body#post article header h1 {
+	border-bottom-style: solid;
+	border-bottom-color: #eee8d5;
+}
+
+body#post article header aside {
+	font-size: 15px;
+	line-height: 16px;
+}
+
+/*TODO: Add index, archive, prev, next, nav rules here*/
+
+body#archives article {
+	border-bottom-style: solid;
+	border-bottom-color: #eee8d5;
+}
+
 body#home {
-	background-color: #e87003;
-	color: #fff;
+	background-color: #002b36;
+	color: #839496;
 	margin: 0 auto;
-	width: 760px;
-	font: 16px/24px 'Colaborate-RegularRegular', Arial, sans-serif;
-	text-shadow: #000 1px 1px 1px;
+	width: 960px;
 }
 
-body#home h1 {
-	margin: 0;
-	text-shadow: #000 3px 3px 3px;
+body#home h1,
+body#home h2,
+body#home h3,
+body#home em,
+body#home strong {
+	color: #93a1a1;
 }
-
-body#home h2 {
-	margin: 0;
-	text-shadow: #000 2px 2px 2px;
-}
-
+body#home h1,
+body#home h2,
 body#home h3 {
 	margin: 0;
-	text-shadow: #000 1px 1px 1px;
 }
 
 body#home a {
-	color: #fff;
+	color: #cb4b16;
 }
 
 body#home > div {
 	clear: both;
-	margin-top: 20px;
+	margin-top: 16px;
 	overflow: hidden;
 }
 
 body#home > div > section {
 	float: left;
-	width: 240px;
+	width: 300px;
 	padding: 0;
-	margin: 0 0 0 20px;
+	margin: 0 0 0 16px;
 }
 
 body#home > div > section#photo {
@@ -220,10 +182,19 @@ body#home > div > section#photo img:after {
 	-moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
+body#home > div > section#blog {
+	width: 440px;
+}
+
+body#home > div > section#blog article {
+	width: 440px;
+	background-color: inherit;
+}
+
+
 body#home > div > section#about {
 	margin-left: 0;
 }
-
 
 body#home div.tweet {
 	margin: 16px 0px;

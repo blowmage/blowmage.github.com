@@ -11,7 +11,7 @@ title:  "::blowmage::"
 <section id="blog">
 {% if site.posts.first.url %}
 <article>
-<h2><a href="{{ site.posts.first.url | replace:'.html','' }}">{{ site.posts.first.title }}</a></h2>
+<h1><a href="{{ site.posts.first.url | replace:'.html','' }}">{{ site.posts.first.title }}</a></h1>
 {{ site.posts.first.desc | textilize }}
 <p>Posted {{ site.posts.first.date | date_to_string }}. Would you like to know <a href="{{ post.url | replace:'.html','' }}">more</a>?</p>
 <p><a href="{{ site.posts.first.url | replace:'.html','' }}#disqus_thread">Comments</a></p>

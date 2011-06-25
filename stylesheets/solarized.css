@@ -1,3 +1,5 @@
+/* @override http://localhost:4000/stylesheets/solarized.css */
+
 /*
 base03:    #002b36;
 base02:    #073642;
@@ -17,9 +19,9 @@ cyan:      #2aa198;
 green:     #859900;
 */
 
-.highlight         { background: #fdf6e3; color: #657b83; line-height: 1em; font-size: 13px; }
-.highlight .lineno { background-color: #eee8d5; color: #93a1a1; padding-left: .5em; padding-right: .5em; }
-.highlight .hll    { background-color: #eee8d5; } /* Don't know what this is... */
+.highlight         { background: #002b36; color: #839496; font-size: 15px; line-height: 15px; }
+.highlight .lineno { background-color: #073642; color: #93a1a1; padding: 0 8px; }
+.highlight .hll    { background-color: #073642; } /* Don't know what this is... */
 .highlight .c      { color: #93a1a1; font-style: italic; } /* Comment */
 .highlight .err    { color: #dc322f; } /* Error */
 .highlight .g      { color: #839496; } /* Generic */

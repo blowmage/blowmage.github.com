@@ -1,13 +1,13 @@
 ---
-layout: default
+layout: archives
 title:  "::blowmage:: Archives"
 ---
 <h1>Explore blowmage's Annals</h1>
 {% for post in site.posts %}
   <article>
-    <h2><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h2>
-    {{ post.desc | textilize }}
-    <p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
+    <heading><h2><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h2></heading>
+    <section>{{ post.desc | textilize }}</section>
+    <footer>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></footer>
   </article>
 {% endfor %}
 

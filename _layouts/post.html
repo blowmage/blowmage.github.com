@@ -1,8 +1,24 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{ page.title }}</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="author" content="Mike Moore">
+  <link rel="alternate" href="http://feeds.feedburner.com/blowmage" title="feed">
+  <link rel="stylesheet" href="/stylesheets/blowmage.css" media="screen" title="default" charset="utf-8">
+  <link rel="stylesheet" href="/stylesheets/solarized.css" charset="utf-8">
+</head>
+
+<body id="post">
+
 <article>
-  <h1>{{ page.title }}</h1>
+  <header>
+    <h1>{{ page.title }}</h1>
+    <aside>
+      <time class="published">{{ page.date | date_to_string }}</time>
+    </aside>
+  </header>
   <section id="content">
   {{ content }}
   </section>
@@ -12,7 +28,6 @@ layout: default
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=blowmage">comments powered by Disqus.</a></noscript>
   </section>
   <footer>
-    <p>published {{ page.date | date_to_string }}</p>
     <nav>
       <ul>
         <li><a href="/" rel="index">Start over</a></li>
@@ -26,4 +41,11 @@ layout: default
       </ul>
     </nav>
   </footer>
-</div>
+</article>
+
+<script src="http://www.google-analytics.com/urchin.js"></script>
+<script>_uacct = "UA-73219-1"; urchinTracker();</script>
+
+</body>
+
+</html>
