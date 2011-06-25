@@ -1,5 +1,5 @@
 ---
-title:  Rubiverse Podcast Liiiiives!!!
+title:  Rubiverse Podcast Lives!
 layout: post
 desc:   Where I explain that "Rubiverse":http://rubiverse.com/ isn't dead, its just been sleeping for more than two years.
 ---
