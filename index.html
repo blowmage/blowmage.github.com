@@ -5,15 +5,18 @@ title:  "::blowmage::"
 <div>
 
 <section id="photo">
-<a href="http://www.flickr.com/photos/blowmage/4364019691/" title="whiskerino-056-4 by blowmage, on Flickr"><img src="http://farm3.static.flickr.com/2429/4364019691_1052f6a9a5.jpg" width="500" height="375" alt="whiskerino-056-4" /></a>
+<a href="http://www.flickr.com/photos/blowmage/4390027637/" title="blowmage, on Flickr"><img src="http://farm3.static.flickr.com/2782/4390027637_cca83204a1.jpg" width="500" height="375" alt="blowmage" /></a>
 </section>
 
 <section id="blog">
 {% if site.posts.first.url %}
 <article>
+<header>
 <h1><a href="{{ site.posts.first.url | replace:'.html','' }}">{{ site.posts.first.title }}</a></h1>
+<aside><time class="published">{{ site.posts.first.date | date_to_string }}</time></aside>
+</header>
 {{ site.posts.first.desc | textilize }}
-<p>Posted {{ site.posts.first.date | date_to_string }}. Would you like to know <a href="{{ post.url | replace:'.html','' }}">more</a>?</p>
+<p>Would you like to know <a href="{{ site.posts.first.url | replace:'.html','' }}">more</a>?</p>
 <p><a href="{{ site.posts.first.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
 <p><em>Find bloggy stuff in my <a href="/archives" rel="archives">annals</a></em></p>
 </article>
@@ -26,12 +29,13 @@ title:  "::blowmage::"
 
 <section id="about">
 <h2>About Me</h2>
-<p>My name is Mike Moore. I work for <a href="http://atti.com/">AT&amp;T Interactive</a> and I like to hack with Ruby. Sometimes I organize conferences like <a href="http://mtnwestrubyconf.org/">MountainWest RubyConf</a> and <a href="http://rubywebconf.org/">Ruby|Web Conference</a>. Other times I'll chat with folks on the <a href="http://rubiverse.com/">Rubiverse</a> podcast. But mostly I just chill with my family and try to stay out of trouble.</p>
+<p>My name is Mike Moore. I work for <a href="http://bloomfire.com/">Bloomfire</a> and I like to hack with Ruby. Sometimes I organize conferences like <a href="http://mtnwestrubyconf.org/">MountainWest RubyConf</a> and <a href="http://rubywebconf.org/">Ruby Web Conference</a>. Other times I'll chat with folks on the <a href="http://rubiverse.com/">Rubiverse</a> podcast. Lately I've been creating and selling t-shirts at <a href="http://www.rubythreads.com/">Ruby Threads</a>. But mostly I just chill with my family and try to stay out of trouble.</p>
 <ul>
   <li>Email: <a href="mailto:mike@blowmage.com" rel="email">mike@blowmage.com</a></li>
   <li>Phone: <a href="tel:+1-801-541-8810" rel="tel">801.541.8810</a></li>
-  <li>Employer: <a href="http://atti.com/" rel="external">AT&amp;T Interactive</a></li>
+  <li>Employer: <a href="http://bloomfire.com/" rel="external">Bloomfire</a></li>
   <li>On the side: <a href="http://humanecode.com/" rel="external">HumaneCode</a></li>
+  <li>Other side: <a href="http://www.rubythreads.com/" rel="external">Ruby Threads</a></li>
 </ul>
 <p>What I do:</p>
 <ul>

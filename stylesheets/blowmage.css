@@ -1,5 +1,3 @@
-/* @override http://localhost:4000/stylesheets/blowmage.css */
-
 body {
 	font: 19px/24px Georgia, "Times New Roman", seriff;
 	width: 720px;
@@ -189,8 +187,18 @@ body#home > div > section#blog {
 body#home > div > section#blog article {
 	width: 440px;
 	background-color: inherit;
+	073642
 }
 
+body#home > div > section#blog article header h1 {
+	border-bottom-style: solid;
+	border-bottom-color: #073642;
+}
+
+body#home > div > section#blog article header aside {
+	font-size: 15px;
+	line-height: 16px;
+}
 
 body#home > div > section#about {
 	margin-left: 0;
@@ -201,7 +209,6 @@ body#home div.tweet {
 }
 
 body#home div.tweet blockquote {
-	font: normal 16px/24px 'Colaborate-MediumRegular', Arial, sans-serif;
 	background-image: none;
 	margin: 0;
 	padding: 0;
