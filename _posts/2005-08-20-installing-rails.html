@@ -6,20 +6,28 @@ desc:   Obligatory post where you show how to install Rails. Who didn't do one o
 <p>I stated in an earlier entry on installing the excellent <a href="http://www.pragprog.com/pragdave">Rublog</a> that I may be simply delaying the inevitable move to <a href="http://rubyonrails.com/">Ruby on Rails</a>, and I was right. The siren call of the new and shiny has won me over, and I decided to extend this site's Ruby support to include Rails. (The fact that the <a href="http://typo.leetsoft.com/">Typo</a> blog engine now renders static HTML files dramatically improving performance also helped, but more on that next time.)</p>
 <p>It is possible to install and use Rails on <a href="http://www.hostingplex.com/redir.php?aff=blowmage">HostingPlex</a>, but the performance will suffer. Rails is a large framework, and not having <a href="http://modruby.net/">mod_ruby</a> and <a href="http://fastcgi.com/">FastCGI</a> installed hurts performance tremendously. Until they are properly supported by HostingPlex, you should use at your own risk. But since you're reading this, I'll assume that you want to continue with installing Rails. ;)</p>
 <p>The first step to installing Rails is to install <a href="http://docs.rubygems.org/">RubyGems</a>. Truth be known, you probably want to install gems whether you install Rails or not. Installing gems is as easy as our previous installations:</p>
-<pre><code>cd ~
-wget http://rubyforge.org/frs/download.php/3463/rubygems-0.8.8.tgz
-tar zxvf rubygems-0.8.8.tgz
-cd rubygems-0.8.8
-ruby setup.rb</code></pre>
+{% highlight bash %}
+$ cd ~
+$ wget http://rubyforge.org/frs/download.php/3463/rubygems-0.8.8.tgz
+$ tar zxvf rubygems-0.8.8.tgz
+$ cd rubygems-0.8.8
+$ ruby setup.rb
+{% endhighlight %}
 <p>Once gems is installed, installing Rails or any other gem is the easiest thing in the world:</p>
-<pre><code>gem install rails</code></pre>
+{% highlight bash %}
+$ gem install rails
+{% endhighlight %}
 <p>Be sure to answer <code>y</code> when prompted by the Rails installation. While you are at it, you can also install a couple supporting libraries common to Rails apps.</p>
-<pre><code>gem update mysql
-gem install redcloth</code></pre>
+{% highlight bash %}
+$ gem update mysql
+$ gem install redcloth
+{% endhighlight %}
 <p>By default, Rails connects to a MySQL database using a library written in Ruby. This library isn't as fast as using a compiled library. <a href="http://blog.x180.net/">James Duncan Davidson</a> has a great <a href="http://blog.x180.net/2005/07/rails_and_mysql.html">article</a> on improving the performance or Rails apps by using the native library. To install the native library you should use these commands:</p>
-<pre><code>cd ~
-wget http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.6.3.tar.gz
-tar zxvf mysql-ruby-2.6.3.tar.gz
-cd mysql-ruby-2.6.3
-ruby extconf.rb --with-mysql-dir=$HOME/local/mysql &amp;&amp; make &amp;&amp; make install</code></pre>
+{% highlight bash %}
+$ cd ~
+$ wget http://tmtm.org/downloads/mysql/ruby/mysql-ruby-2.6.3.tar.gz
+$ tar zxvf mysql-ruby-2.6.3.tar.gz
+$ cd mysql-ruby-2.6.3
+$ ruby extconf.rb --with-mysql-dir=$HOME/local/mysql && make && make install
+{% endhighlight %}
 <p>Is it me, or are these tasks getting easier?</p>

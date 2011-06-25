@@ -7,23 +7,33 @@ desc:   Oh man, back in the day Rublog was all the rage.
 <p>I originally started out using <a href="http://www.blosxom.com/">blosxom</a>, and I liked that approach very much. But I've never been much of a <a href="http://www.perl.com/">Perl</a> hack, and I was faced with either learning more Perl or finding a different solution. Once I found <a href="http://ruby-lang.org/">Ruby</a> I knew I had my language, and I just needed an engine. I thought about porting blosxom to Ruby, but I decided that I would do better with <a href="http://rubyforge.org/projects/rublog/">Rublog</a> as my starting point. Rublog isn't 100% what I'd like it to be out of the box, but I find it very easy to change to my liking. I figure one of the tenants of <a href="http://www.artima.com/intv/dry.html"><q>Don't Repeat Yourself</q></a> is not reinventing the wheel when you don't have to.</p>
 <p>This may seem to fly in the face of the current <a href="http://rubyonrails.com/">Rails</a> hype, (and I may indeed only be delaying the inevitable move to Rails) but until my hosting provider has more support for Rails I'm very happy with where I'm at with <a href="http://www.pragprog.com/pragdave">Rublog</a>.</p>
 <p>You start by downloading and uncompressing the Rublog source:</p>
-<pre><code>$ cd ~
+{% highlight bash %}
+$ cd ~
 $ wget http://rubyforge.org/frs/download.php/1668/rublog-1.0.tgz
-$ tar zxtar zxvf rublog-1.0.tgz</code></pre>
+$ tar zxtar zxvf rublog-1.0.tgz
+{% endhighlight %}
 <p>The next step is to copy the CGI script to your <code>public_html</code> directory. I've renamed it for reasons that I'll explain later. I also created a new directory to store all my blog entries. I find it best to not store these blog entries in the <code>public_html</code> directory, since you probably don't want folks to bypass the CGI script to get to the content.</p>
-<pre><code>$ cp rublog-1.0/rublog.cgi public_html/index.cgi
-$ mkdir blog</code></pre>
+{% highlight bash %}
+$ cp rublog-1.0/rublog.cgi public_html/index.cgi
+$ mkdir blog
+{% endhighlight %}
 <p>Before you browse to <code>/index.cgi</code> and see the content, you need to change the CGI file to point to your local instance of Ruby. Be sure to change <code>/home/<i>blowmage</i></code> to the path to your account's home directory:</p>
-<pre><code>#!/home/<i>blowmage</i>/local/bin/ruby
-RubLogSourceLocation("/home/<i>blowmage</i>/rublog-1.0")</code></pre>
+{% highlight ruby %}
+#!/home/<i>blowmage</i>/local/bin/ruby
+RubLogSourceLocation("/home/blowmage/rublog-1.0")
+{% endhighlight %}
 <p>The CGI will show you the Rublog documentation by default. Once you are comfortable with the way Rublog works, you should update the <code>index.cgi</code> script to look at the <code>blog</code> directory for the blog content:</p>
-<pre><code>BLOG_DIR = "/home/<i>blowmage</i>/blog"</code></pre>
+{% highlight ruby %}
+BLOG_DIR = "/home/blowmage/blog"
+{% endhighlight %}
 <p>You can now browse your site through the script: <code>/index.cgi</code>.</p>
 <p>However, I hate seeing a CGI script in the URL. I feel this doesn't <a href="http://www.useit.com/alertbox/990321.html">promote</a> <a href="http://www.w3.org/Provider/Style/URI">good</a> <a href="http://www.w3.org/DesignIssues/HTTP-URI">URIs</a>. If we could hide the CGI script then we are free to replace our site's implementation without breaking search engine results and people's bookmarks. Doing this is much easier than it sounds, and it involves our old friend the <code>.htaccess</code> file.</p>
 <p>What we need to do is tell the <code>.htaccess</code> file to route all failed requests through our Rublog CGI script. This means that requests to existing resources such as other CGI scripts or HTML or image files will continue to be served. The requests for files that don't exist are sent to the Rublog CGI where Rublog determines what to serve for that request. This is accomplished by adding the following rewrite rules to the <code>.htaccess</code> file.</p>
-<pre><code>RewriteEngine on
+{% highlight text %}
+RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.cgi/$1 [L,QSA]</code></pre>
+RewriteRule ^(.*)$ index.cgi/$1 [L,QSA]
+{% endhighlight %}
 <p>Rublog is now installed and will respond to requests even if they are missing the script path. However, Rublog wasn't written with the expectation that we would want to hide the script path, and the script path is embedded throughout the Rublog code. I have made additional changes to Rublog to hide the script path, but those are outside of the scope of this document.</p>
 <p>That's it! Despite the hype machine working overtime promoting Rails, I've found the hardest part was installing Ruby. I hope this article has been of interest to you. If you have any suggestions or corrections <a href="mailto:mike@blowmage.com?subject= Installing Ruby on HostingPlex">drop me a line</a>. With Ruby installed, you're on your way to become more productive and have more fun. Good luck!</p>

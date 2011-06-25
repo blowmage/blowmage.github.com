@@ -7,24 +7,34 @@ desc:   I attempt to show that installing Ruby on shared hosting doesn't have to
 <p>Much of this information is a direct result of an excellent <a href="http://www.viarails.net/articles/2005/04/22/installing-typo-on-a-freeshell-org-account">article</a> on <a href="http://www.viarails.net/">Wesley Moxam</a>'s blog. I am going to initially focus on installing and using Ruby and Rublog, and not necessarily <a href="http://rubyonrails.com/">Rails</a>. Although once Ruby is installed and configured, installing and using Rails shouldn't be too hard to do. However, HostingPlex is not well suited to Rails hosting (yet) because some server-side configurations such as <a href="http://modruby.net/">mod_ruby</a> and <a href="http://fastcgi.com/">FastCGI</a> are very difficult or impossible to install with a shared-hosting account. Hopefully HostingPlex will change their mind and start supporting Ruby and Rails in the future.</p>
 <p>Ruby is not currently installed on the HostingPlex servers, as I assume is the case for the majority of Linux hosting. To install Ruby, you'll need access to the shell for your account. The Unix shell is similar to the Command Prompt on Windows machines. You can access the shell through your CPanel interface by clicking the <q>SSH/Shell Access</q> link.</p>
 <p>We'll start with a simple command to ask Ruby to tell us what version it is.</p>
-<pre><code>$ ruby -v</code></pre>
+{% highlight bash %}
+$ ruby -v
+{% endhighlight %}
 <p>If you don't have Ruby installed you should see a message such as <q>command not found</q>. If you do have Ruby installed, then you can skip ahead.</p>
 <p>To install Ruby we will download and compile Ruby from the source code. We'll install Ruby into a new directory named <code>local</code>, because we don't have permissions to install Ruby for all users on the server. We will follow this process for the other programs we'll eventually install.</p>
-<pre><code>$ cd ~
+{% highlight bash %}
+$ cd ~
 $ wget ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.2.tar.gz
 $ tar zxvf ruby-1.8.2.tar.gz
 $ cd ruby-1.8.2
-$ ./configure --prefix=$HOME/local &amp;&amp; make &amp;&amp; make install</code></pre>
+$ ./configure --prefix=$HOME/local && make && make install
+{% endhighlight %}
 <p>Our next step is to ask Ruby what version is installed.</p>
-<pre><code>$ ruby -v</code></pre>
+{% highlight bash %}
+$ ruby -v
+{% endhighlight %}
 <p>Did that fail again? Don't worry, this is because we installed Ruby in a non-standard location, and the shell doesn't know to look in the new directory. To make the shell look in that directory, run the following command:</p>
-<pre><code>$ export PATH=$HOME/local/bin:$PATH</code></pre>
+{% highlight bash %}
+$ export PATH=$HOME/local/bin:$PATH
+{% endhighlight %}
 <p>Now you should be able to ask Ruby for its version without receiving an error message. Of course, it would be a pain to run the preceding <code>PATH</code> command every time we connected to the server, so we'll create a new file named <code>.bash_profile</code>. In this file, you should add the now following line:</p>
-<pre><code>PATH=$HOME/local/bin:$PATH</code></pre>
+{% highlight text %}
+PATH=$HOME/local/bin:$PATH
+{% endhighlight %}
 <p>Now every time you connect to the server through the shell, your account will look in your <code>local</code> directory for Ruby.</p>
 <p>Let's test this! Create a new file in your <code>public_html</code> directory named <code>hello.cgi</code>. The file should include the following lines:</p>
 
-{% highlight yaml linenos %}
+{% highlight ruby %}
 #!/home/blowmage/local/bin/ruby
 # hello.cgi
 puts "content-type: text/html"
