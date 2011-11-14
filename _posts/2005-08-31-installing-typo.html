@@ -23,7 +23,7 @@ production:
   username: blowmage_typo
   password: super_secret_password
 {% endhighlight %}
-<p>We need to tell Typo where to find Ruby and where to find the Typo scripts. We do this in the <code>typo-2.5.5/public/dispatch.cgi</code> script. (Because HostingPlex doesn't have Ruby installed, we installed a local version <a href="/articles/2005/05/27/installing-ruby">earlier</a>.) We also need to tell Typo that we should be running in the production environment by setting the RAILS_ENV environment value. This will tell Typo to use caching for improved performance. Change the first few lines to this:</p>
+<p>We need to tell Typo where to find Ruby and where to find the Typo scripts. We do this in the <code>typo-2.5.5/public/dispatch.cgi</code> script. (Because HostingPlex doesn't have Ruby installed, we installed a local version <a href="/2005/05/27/installing-ruby">earlier</a>.) We also need to tell Typo that we should be running in the production environment by setting the RAILS_ENV environment value. This will tell Typo to use caching for improved performance. Change the first few lines to this:</p>
 {% highlight ruby %}
 #!/home/blowmage/local/bin/ruby
 ENV["RAILS_ENV"] = "production"
