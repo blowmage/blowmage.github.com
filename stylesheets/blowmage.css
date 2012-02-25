@@ -108,6 +108,7 @@ body#home {
 	color: #839496;
 	margin: 0 auto;
 	width: 960px;
+	position: relative;
 }
 
 body#home h1,
