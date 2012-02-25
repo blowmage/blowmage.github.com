@@ -1,8 +1,4 @@
 jQuery(function($) {
-  // $('body > footer').waypoint(function() {
-  //   alert('ZOMG HELLO!');
-  // });
-  // $.waypoints.settings.scrollThrottle = 5;
   $('body').append('<img id="ponies" src="/images/ponies.png" style="position:absolute;bottom:0;right:0;height:300px;">');
   $('#ponies').hide();
   $('body > footer').waypoint(function(event, direction) {
@@ -15,8 +11,7 @@ jQuery(function($) {
     }
   }, {
     offset: '100%'
-  });
-  
+  });  
 });
 
 function loadTwitterTweets(data) {
