@@ -7,7 +7,9 @@ I had a great time presenting at [Ruby on Ales 2012](http://ruby.onales.com/). I
 
 My presentation was an experience report on some changes that we made to [Bloomfire](http://www.bloomfire.com/)'s infrastructure. We had issues that we couldn't fix on our previous cloud hosting provider, and we had many thoughts on where we wanted to go in the future. In the end we decided on moving to Amazon's [Virtual Private Cloud](http://aws.amazon.com/vpc/) offereing and have been happy with the decison so far.
 
-<script src="http://speakerdeck.com/embed/4f4fe67060be14001f0248ff.js"></script>
+<script src="http://speakerdeck.com/embed/4f4fe67060be14001f0248ff.js">
+  <!-- Jekyll, Y U NO like this script? -->
+</script>
 
 I'm very proud of our work on this migration. We picked up many features we had been trying to add for months and months, all with very minor changes to the application's code. We solved the problems in the most appropriate way, and I feel good about that.
 
