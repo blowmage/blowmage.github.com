@@ -73,7 +73,7 @@ code, pre {
 
 pre {
   padding:8px 15px;
-  background: #f8f8f8;  
+  background: #f8f8f8;
   border-radius:5px;
   border:1px solid #e5e5e5;
   overflow-x: auto;
@@ -163,29 +163,33 @@ footer {
 }
 
 @media print, screen and (max-width: 960px) {
-  
+
   div.wrapper {
     width:auto;
     margin:0;
   }
-  
+
   header, section, footer {
     float:none;
     position:static;
     width:auto;
   }
-  
+
   header {
     padding-right:320px;
   }
-  
+
+  header p.avatar {
+    display:none;
+  }
+
   section {
     border:1px solid #e5e5e5;
     border-width:1px 0;
     padding:20px 0;
     margin:0 0 20px;
   }
-  
+
   header a small {
     display:inline;
   }
@@ -195,9 +199,13 @@ footer {
   body {
     word-wrap:break-word;
   }
-  
+
   header {
     padding:0;
+  }
+
+  header p.avatar {
+    display:none;
   }
 
   pre, code {
@@ -208,6 +216,10 @@ footer {
 @media print, screen and (max-width: 480px) {
   body {
     padding:15px;
+  }
+
+  header p.avatar {
+    display:none;
   }
 }
 
