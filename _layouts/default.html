@@ -1,22 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
-  <title>{{ page.title }}</title>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  <meta name="author" content="Mike Moore">
-  <link rel="alternate" href="http://feeds.feedburner.com/blowmage" title="feed">
-  <link rel="stylesheet" href="/stylesheets/blowmage.css" media="screen" title="default" charset="utf-8">
-  <link rel="stylesheet" href="/stylesheets/solarized.css" charset="utf-8">
-</head>
-
-<body>
-
-{{ content }}
-
-<script src="http://www.google-analytics.com/urchin.js"></script>
-<script>_uacct = "UA-73219-1"; urchinTracker();</script>
-
-</body>
-
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>{{ page.title }}</title>
+    <meta name="author" content="Mike Moore">
+    <link rel="alternate" href="http://feeds.feedburner.com/blowmage" title="feed">
+    <link rel="stylesheet" href="/stylesheets/blowmage.css">
+    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="/">blowmage</a></h1>
+      </header>
+      <section>
+        <h1>{{ page.title }}</h1>
+        {{ content }}
+      </section>
+      <footer>
+        <p>My name is Mike Moore. I like to hack with Ruby. You can <a href="http://humanecode.com/hire">hire me</a>. <a href="/about">more...</a></p>
+        <ul>
+          <li>Email: <a href="mailto:mike@blowmage.com" rel="email">mike@blowmage.com</a></li>
+          <li>Phone: <a href="tel:+1-801-541-8810" rel="tel">801.541.8810</a></li>
+        </ul>
+        <p>&copy; 2012 Mike Moore</p>
+      </footer>
+    </div>
+    <script src="/javascripts/scale.fix.js"></script>
+    <script src="http://www.google-analytics.com/urchin.js"></script>
+    <script>_uacct = "UA-73219-1"; urchinTracker();</script>
+  </body>
 </html>

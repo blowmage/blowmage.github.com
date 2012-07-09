@@ -1,51 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
-  <title>{{ page.title }}</title>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  <meta name="author" content="Mike Moore">
-  <link rel="alternate" href="http://feeds.feedburner.com/blowmage" title="feed">
-  <link rel="stylesheet" href="/stylesheets/blowmage.css" media="screen" title="default" charset="utf-8">
-  <link rel="stylesheet" href="/stylesheets/solarized.css" charset="utf-8">
-</head>
-
-<body id="post">
-
-<article>
-  <header>
-    <h1>{{ page.title }}</h1>
-    <aside>
-      <time class="published">{{ page.date | date_to_string }}</time>
-    </aside>
-  </header>
-  <section id="content">
-  {{ content }}
-  </section>
-  <section id="comments">
-    <div id="disqus_thread"></div>
-    <script src="http://disqus.com/forums/blowmage/embed.js"></script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=blowmage">comments powered by Disqus.</a></noscript>
-  </section>
-  <footer>
-    <nav>
-      <ul>
-        <li><a href="/" rel="index">Start over</a></li>
-        <li><a href="/archives" rel="archives">Check out my annals</a></li>
-{% if page.previous.url %}
-        <li><a href="{{page.previous.url | replace:'.html','' }}" rel="prev"> Previous &laquo; {{page.previous.title}}</a></li>
-{% endif %}
-{% if page.next.url %}
-        <li><a href="{{page.next.url | replace:'.html','' }}" rel="next">Next &raquo; {{page.next.title}}</a></li>
-{% endif %}
-      </ul>
-    </nav>
-  </footer>
-</article>
-
-<script src="http://www.google-analytics.com/urchin.js"></script>
-<script>_uacct = "UA-73219-1"; urchinTracker();</script>
-
-</body>
-
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>{{ page.title }}</title>
+    <meta name="author" content="Mike Moore">
+    <link rel="alternate" href="http://feeds.feedburner.com/blowmage" title="feed">
+    <link rel="stylesheet" href="/stylesheets/blowmage.css">
+    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body id="post">
+    <div class="wrapper">
+      <header>
+        <h1>{{ page.title }}</h1>
+        <aside>
+          <time class="published">{{ page.date | date_to_string }}</time>
+        </aside>
+      </header>
+      <section>
+        <article>
+          {{ content }}
+          <div id="disqus_thread"></div>
+          <script src="http://disqus.com/forums/blowmage/embed.js"></script>
+          <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=blowmage">comments powered by Disqus.</a></noscript>
+        </article>
+      </section>
+      <footer>
+        <nav>
+          <ul>
+            <li><a href="/" rel="index">Start over</a></li>
+            <li><a href="/archives" rel="archives">Check out my annals</a></li>
+    {% if page.previous.url %}
+            <li><a href="{{page.previous.url | replace:'.html','' }}" rel="prev"> Previous &laquo; {{page.previous.title}}</a></li>
+    {% endif %}
+    {% if page.next.url %}
+            <li><a href="{{page.next.url | replace:'.html','' }}" rel="next">Next &raquo; {{page.next.title}}</a></li>
+    {% endif %}
+          </ul>
+        </nav>
+        <p>&copy; 2012 Mike Moore</p>
+      </footer>
+    </div>
+    <script src="/javascripts/scale.fix.js"></script>
+    <script src="http://www.google-analytics.com/urchin.js"></script>
+    <script>_uacct = "UA-73219-1"; urchinTracker();</script>
+  </body>
 </html>

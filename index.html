@@ -2,81 +2,21 @@
 layout: home
 title:  "::blowmage::"
 ---
-<div>
-
-<section id="photo">
-<a href="http://www.flickr.com/photos/blowmage/4390027637/" title="blowmage, on Flickr"><img src="http://farm3.static.flickr.com/2782/4390027637_cca83204a1.jpg" width="500" height="375" alt="blowmage" /></a>
-</section>
-
-<section id="blog">
-{% if site.posts.first.url %}
+{% for post in site.posts limit:1 %}
 <article>
-<header>
-<h1><a href="{{ site.posts.first.url | replace:'.html','' }}">{{ site.posts.first.title }}</a></h1>
-<aside><time class="published">{{ site.posts.first.date | date_to_string }}</time></aside>
-</header>
-{{ site.posts.first.desc | textilize }}
-<p>Would you like to know <a href="{{ site.posts.first.url | replace:'.html','' }}">more</a>?</p>
-<p><a href="{{ site.posts.first.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
-<p><em>Find bloggy stuff in my <a href="/archives" rel="archives">annals</a></em></p>
+<h1><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h1>
+{{ post.content }}
+<p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
 </article>
-{% endif %}
-</section>
-
-</div>
-
-<div>
-
-<section id="about">
-<h2>About Me</h2>
-<p>My name is Mike Moore. I like to hack with Ruby. Sometimes I organize conferences like <a href="http://mtnwestrubyconf.org/">MountainWest RubyConf</a> and <a href="http://rubywebconf.org/">Ruby Web Conference</a>. Other times I'll chat with folks on the <a href="http://rubiverse.com/">Rubiverse</a> podcast. Lately I've been creating and selling t-shirts at <a href="http://www.rubythreads.com/">Ruby Threads</a>. But mostly I just chill with my family and try to stay out of trouble.</p>
-<ul>
-  <li>Email: <a href="mailto:mike@blowmage.com" rel="email">mike@blowmage.com</a></li>
-  <li>Phone: <a href="tel:+1-801-541-8810" rel="tel">801.541.8810</a></li>
-  <li>On the side: <a href="http://humanecode.com/" rel="external">HumaneCode</a></li>
-  <li>Other side: <a href="http://www.rubythreads.com/" rel="external">Ruby Threads</a></li>
-</ul>
-<p>What I do:</p>
-<ul>
-  <li><a href="http://rubiverse.com/" rel="external">Rubiverse</a></li>
-  <li><a href="http://tumblr.blowmage.com/" rel="external">tumblowmage</a></li>
-  <li><a href="http://status.blowmage.com/" rel="external">Daily Status</a></li>
-  <li><a href="http://mtnwestrubyconf.org/" rel="external">MountainWest RubyConf</a></li>
-  <li><a href="http://rubywebconf.org/" rel="external">Ruby|Web Conference</a></li>
-</ul>
-<p>Find me online:</p>
-<ul>
-  <li><a href="http://twitter.com/blowmage" rel="external">Twitter</a></li>
-  <li><a href="http://facebook.com/blowmage" rel="external">Facebook</a></li>
-  <li><a href="http://linkedin.com/in/mikemoore" rel="external">Linkedin</a></li>
-  <li><a href="http://delicious.com/blowmage" rel="external">Delicious</a></li>
-  <li><a href="http://flickr.com/blowmage" rel="external">Flickr</a></li>
-  <li><a href="http://github.com/blowmage" rel="external">GitHub</a></li>
-  <li><a href="http://workingwithrails.com/person/6736-mike-moore" rel="external">Working With Rails</a></li>
-  <li><a href="http://railsdeveloper.com/d/blowmage" rel="external">Rails Developer</a></li>
-</ul>
-</section>
-
-<section id="twitter">
-<h2>Twitter</h2>
-<div id="tweets">Loading...</div>
-<p><a href="http://twitter.com/blowmage" rel="external">follow me on twitter</a></p>
-</section>
-
-<section id="github">
-<h2>GitHub</h2>
-<div id="commits">Loading...</div>
-<p><a href="http://github.com/blowmage" rel="external">follow me on github</a></p>
-</section>
-
-</div>
-
-<!--
-Yes, I am making fun of you here. Deal with it.
--->
-
-<script src="http://twitter.com/status/user_timeline/blowmage.json?callback=loadTwitterTweets" charset="utf-8"></script>
-<script src="http://github.com/blowmage.json?callback=loadGitHubCommits" charset="utf-8"></script>
+{% endfor %}
+{% for post in site.posts limit:4 offset:1 %}
+<article>
+<h1><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h1>
+{{ post.desc | textilize }}
+<p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
+</article>
+{% endfor %}
+<p><em>Find more bloggy stuff in my <a href="/archives" rel="archives">annals</a></em></p>
 
 <script>
 var disqus_shortname = 'blowmage';
