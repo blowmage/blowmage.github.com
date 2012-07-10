@@ -17,7 +17,7 @@ This is more than a pedantic exercise. These names have meanings outside of the 
 A Chance to Change
 ------------------
 
-When I started [minitest-rails](https://github.com/blowmage/minitest-rails) I saw an opportunity to correct this. So when using minitest-rails model tests to in `test/models`, controller tests go in `test/controllers`, helper tests go in `test/helpers`, mailer tests go in `test/mailers`, and acceptance tests go in `test/acceptance`. Like Rpsec the locations are based on what is being tested.
+When I [started minitest-rails](http://blowmage.com/2012/07/10/announcing-minitest-rails) I saw an opportunity to correct this. So when using minitest-rails model tests to in `test/models`, controller tests go in `test/controllers`, helper tests go in `test/helpers`, mailer tests go in `test/mailers`, and acceptance tests go in `test/acceptance`. Like Rpsec the locations are based on what is being tested.
 
 Now my model, helper, controller, and mailer tests can live where I consider is logical. I also find this layout more discoverable. For instance, I don't have to explain the layout when introducing Rails or testing to new developers.
 
