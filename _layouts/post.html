@@ -24,6 +24,14 @@
       <section>
         <article>
           {{ content }}
+          <div class="meta">
+            {% if page.reddit %}
+              <span class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button1.js"></script></span>
+            {% endif %}
+            {% if page.hackernews %}
+              <span class="hackernews"><a href="http://news.ycombinator.com/submit" class="hn-share-button">Vote on HN</a></span>
+            {% endif %}
+          </div>
           <div id="disqus_thread"></div>
           <script src="http://disqus.com/forums/blowmage/embed.js"></script>
           <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=blowmage">comments powered by Disqus.</a></noscript>
@@ -34,17 +42,25 @@
           <ul>
             <li><a href="/" rel="index">Start over</a></li>
             <li><a href="/archives" rel="archives">Check out my annals</a></li>
-    {% if page.previous.url %}
-            <li><a href="{{page.previous.url | replace:'.html','' }}" rel="prev"> Previous &laquo; {{page.previous.title}}</a></li>
-    {% endif %}
-    {% if page.next.url %}
-            <li><a href="{{page.next.url | replace:'.html','' }}" rel="next">Next &raquo; {{page.next.title}}</a></li>
-    {% endif %}
+            {% if page.previous.url %}
+              <li><a href="{{page.previous.url | replace:'.html','' }}" rel="prev"> Previous &laquo; {{page.previous.title}}</a></li>
+            {% endif %}
+            {% if page.next.url %}
+              <li><a href="{{page.next.url | replace:'.html','' }}" rel="next">Next &raquo; {{page.next.title}}</a></li>
+            {% endif %}
           </ul>
         </nav>
         <p>&copy; 2012 Mike Moore</p>
       </footer>
     </div>
+    <script>
+      (function(d, t) {
+        var g = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        g.src = '//hnbutton.appspot.com/static/hn.js';
+        s.parentNode.insertBefore(g, s);
+      }(document, 'script'));
+    </script>
     <script src="/javascripts/scale.fix.js"></script>
     <script src="http://www.google-analytics.com/urchin.js"></script>
     <script>_uacct = "UA-73219-1"; urchinTracker();</script>
