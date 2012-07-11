@@ -1,0 +1,157 @@
+---
+title:  Announcing minitest-rails
+layout: post
+desc:   The one that announces minitest-rails, a library that enables you to test your Rails 3 apps using minitest.
+reddit: true
+hackernews: true
+---
+<p>Yesterday I released version 0.1 of <a href='https://github.com/blowmage/minitest-rails'>minitest-rails</a>, a library that enables you to test your Rails 3 apps using <a href='https://github.com/seattlerb/minitest'>minitest</a>.</p>
+
+<h2 id='getting_started'>Getting Started</h2>
+
+<div class="video-player widescreen">
+<iframe width="704" height="424" src="http://www.youtube.com/embed/xA2f2zBNvsc?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<h2 id='installing'>Installing</h2>
+
+<p>The minitest-rails gem is intended to work side-by-side with Test::Unit and/or Rspec. But if you are starting a new project and only want to use minitest-rails, you can create a new rails app without a testing framework:</p>
+
+<pre><code>rails new MyApp --skip-test-unit</code></pre>
+
+<p>Once you have a Rails app all you need to do is add minitest-rails to the <code>:test</code> and <code>:development</code> groups in your Gemfile:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>group</span> <span class='ss'>:test</span><span class='p'>,</span> <span class='ss'>:development</span> <span class='k'>do</span>
+  <span class='n'>gem</span> <span class='s1'>&#39;minitest-rails&#39;</span>
+<span class='k'>end</span>
+</code></pre>
+</div>
+<p>Next run the installation generator to add the <code>test/minitest_helper.rb</code> file:</p>
+
+<pre><code>rails generate mini_test:install</code></pre>
+
+<p>That&#8217;s it! You are ready to write some tests.</p>
+
+<h2 id='basic_usage'>Basic Usage</h2>
+
+<p>You can generate tests, or you can write your own. Let&#8217;s assume you have the following model:</p>
+<div class='highlight'><pre><code class='ruby'><span class='k'>class</span> <span class='nc'>User</span> <span class='o'>&lt;</span> <span class='no'>ActiveRecord</span><span class='o'>::</span><span class='no'>Base</span>
+  <span class='n'>attr_accessible</span> <span class='ss'>:name</span>
+  <span class='n'>validates_presence_of</span> <span class='ss'>:name</span>
+<span class='k'>end</span>
+</code></pre>
+</div>
+<p>Testing this object is very easy. The only differences between Test::Unit and minitest are the different helper in the <code>require</code>, and the TestCase being namespaced under <code>MiniTest::Rails</code>.</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>require</span> <span class='s2'>&quot;minitest_helper&quot;</span>
+
+<span class='k'>class</span> <span class='nc'>UserTest</span> <span class='o'>&lt;</span> <span class='no'>MiniTest</span><span class='o'>::</span><span class='no'>Rails</span><span class='o'>::</span><span class='no'>ActiveSupport</span><span class='o'>::</span><span class='no'>TestCase</span>
+  <span class='k'>def</span> <span class='nf'>test_valid</span>
+    <span class='n'>user</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>new</span> <span class='nb'>name</span><span class='p'>:</span> <span class='s2'>&quot;Ryan Davis&quot;</span>
+    <span class='n'>assert</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>valid?</span><span class='p'>,</span> <span class='s2'>&quot;valid with a name&quot;</span>
+  <span class='k'>end</span>
+
+  <span class='k'>def</span> <span class='nf'>test_invalid</span>
+    <span class='n'>user</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>new</span>
+    <span class='n'>refute</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>valid?</span><span class='p'>,</span> <span class='s2'>&quot;invalid without a name&quot;</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre>
+</div>
+<h2 id='using_the_spec_dsl'>Using the Spec DSL</h2>
+
+<p>The feature that most seem to be excited by is the ability to use the Spec DSL in your tests.</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>require</span> <span class='s2'>&quot;minitest_helper&quot;</span>
+
+<span class='n'>describe</span> <span class='no'>User</span> <span class='k'>do</span>
+  <span class='n'>it</span> <span class='s2'>&quot;can be valid&quot;</span> <span class='k'>do</span>
+    <span class='n'>user</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>new</span> <span class='nb'>name</span><span class='p'>:</span> <span class='s2'>&quot;Ryan Davis&quot;</span>
+    <span class='n'>user</span><span class='o'>.</span><span class='n'>valid?</span><span class='o'>.</span><span class='n'>must_equal</span> <span class='kp'>true</span>
+  <span class='k'>end</span>
+
+  <span class='n'>it</span> <span class='s2'>&quot;can be invalid&quot;</span> <span class='k'>do</span>
+    <span class='n'>user</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>new</span>
+    <span class='n'>user</span><span class='o'>.</span><span class='n'>valid?</span><span class='o'>.</span><span class='n'>wont_equal</span> <span class='kp'>true</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre>
+</div>
+<p>You can even tell the generators to output tests using the Spec DSL by providing the <code>--spec</code> option:</p>
+
+<pre><code>rails generate model User --spec</code></pre>
+
+<p>Or you can set the Spec DSL to be the default by configuring it in your <code>config/application.rb</code> file:</p>
+<div class='highlight'><pre><code class='ruby'><span class='n'>config</span><span class='o'>.</span><span class='n'>generators</span> <span class='k'>do</span> <span class='o'>|</span><span class='n'>g</span><span class='o'>|</span>
+  <span class='n'>g</span><span class='o'>.</span><span class='n'>test_framework</span> <span class='ss'>:mini_test</span><span class='p'>,</span> <span class='ss'>:spec</span> <span class='o'>=&gt;</span> <span class='kp'>true</span>
+<span class='k'>end</span>
+</code></pre>
+</div>
+<p>Of course, you can mix and match between the Unit and Spec styles. I prefer to use the Spec DSL blocks with Unit&#8217;s assertions.</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>require</span> <span class='s2'>&quot;minitest_helper&quot;</span>
+
+<span class='n'>describe</span> <span class='no'>User</span> <span class='k'>do</span>
+  <span class='n'>it</span> <span class='s2'>&quot;can be valid&quot;</span> <span class='k'>do</span>
+    <span class='n'>user</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>new</span> <span class='nb'>name</span><span class='p'>:</span> <span class='s2'>&quot;Ryan Davis&quot;</span>
+    <span class='n'>assert</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>valid?</span><span class='p'>,</span> <span class='s2'>&quot;valid with a name&quot;</span>
+  <span class='k'>end</span>
+
+  <span class='n'>it</span> <span class='s2'>&quot;can be invalid&quot;</span> <span class='k'>do</span>
+    <span class='n'>user</span> <span class='o'>=</span> <span class='no'>User</span><span class='o'>.</span><span class='n'>new</span>
+    <span class='n'>refute</span> <span class='n'>user</span><span class='o'>.</span><span class='n'>valid?</span><span class='p'>,</span> <span class='s2'>&quot;invalid without a name&quot;</span>
+  <span class='k'>end</span>
+<span class='k'>end</span>
+</code></pre>
+</div>
+<p>But however you use it is up to you.</p>
+
+<h2 id='test_locations'>Test Locations</h2>
+
+<p>One of the biggest changes from Test::Unit is the default location of the tests. Like Rspec, minitest-rails organizes the tests by subject and not the type of test that is performed. Its possible to perform integration tests on models. (Rails unfortunately calls these functional tests.) Just as it is possible to perform unit tests on controllers. So the following locations are used:</p>
+<table>
+  <tr>
+    <th />
+    <th><code>Test::Unit</code></th>
+    <th><code>MiniTest::Rails</code></th>
+  </tr>
+  <tr>
+    <td>Models</td>
+    <td><code>test/unit/widget_test.rb</code></td>
+    <td><code>test/models/widget_test.rb</code></td>
+  </tr>
+  <tr>
+    <td>Helpers</td>
+    <td><code>test/unit/helpers/widget_helper_test.rb</code></td>
+    <td><code>test/helpers/widget_helper_test.rb</code></td>
+  </tr>
+  <tr>
+    <td>Controller</td>
+    <td><code>test/functional/widgets_controller_test.rb</code></td>
+    <td><code>test/controllers/widgets_controller_test.rb</code></td>
+  </tr>
+  <tr>
+    <td>Mailer</td>
+    <td><code>test/functional/notifications_test.rb</code></td>
+    <td><code>test/mailers/notifications_test.rb</code></td>
+  </tr>
+  <tr>
+    <td>Acceptance</td>
+    <td><code>test/integration/user_can_login_test.rb</code></td>
+    <td><code>test/acceptance/user_can_login_test.rb</code></td>
+  </tr>
+</table>
+<h2 id='overriding_testunit'>Overriding Test::Unit</h2>
+
+<p>If you want to use minitest in your current tests, you can inject minitest-rails by adding the following to your <code>test_helper.rb</code> file:</p>
+<div class='highlight'><pre><code class='ruby'><span class='nb'>require</span> <span class='s2'>&quot;minitest/rails&quot;</span>
+<span class='no'>MiniTest</span><span class='o'>::</span><span class='no'>Rails</span><span class='o'>.</span><span class='n'>override_testunit!</span>
+</code></pre>
+</div>
+<h2 id='contribute'>Contribute</h2>
+
+<p>This is still a young project and needs lots of help. Give it a try and give some feedback. Or a patch. :)</p>
+
+<ul>
+<li><a href='https://github.com/blowmage/minitest-rails'>code</a></li>
+
+<li><a href='http://blowmage.com/minitest-rails/'>docs</a></li>
+
+<li><a href='https://groups.google.com/group/minitest-rails'>mailing list</a></li>
+</ul>
