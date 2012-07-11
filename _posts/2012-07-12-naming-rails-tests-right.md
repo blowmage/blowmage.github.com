@@ -12,12 +12,12 @@ The big three types of tests are [Unit](http://c2.com/cgi/wiki?UnitTest), [Integ
 
 Rails puts model tests under `test/unit`, but are they always unit tests? It is common to perform unit *and* integration tests on models, depending on how they are designed. In my experience, most Rails apps have a problem overloading the User object with too many responsibilities and dependencies. And those tests are by definition integration tests. The location of those tests tell me that they are unit tests, and I always feel dirty when writing integration tests.
 
-This is more than a pedantic exercise. These names have meanings outside of the Rails community and this has caused much confusion over the years. My opinion is that this naming confusion has contributed to the adoption of Rpsec over Rails' default tests using Test::Unit, because Rspec names their tests according to what is being tested and not the type of tests being performed.
+This is more than a pedantic exercise. These names have meanings outside of the Rails community and this has caused much confusion over the years. My opinion is that this naming confusion has contributed to the adoption of Rspec over Rails' default tests using Test::Unit, because Rspec names their tests according to what is being tested and not the type of tests being performed.
 
 A Chance to Change
 ------------------
 
-When I [started minitest-rails](http://blowmage.com/2012/07/10/announcing-minitest-rails) I saw an opportunity to correct this. So when using minitest-rails model tests to in `test/models`, controller tests go in `test/controllers`, helper tests go in `test/helpers`, mailer tests go in `test/mailers`, and acceptance tests go in `test/acceptance`. Like Rpsec the locations are based on what is being tested.
+When I [started minitest-rails](http://blowmage.com/2012/07/10/announcing-minitest-rails) I saw an opportunity to correct this. So when using minitest-rails model tests to in `test/models`, controller tests go in `test/controllers`, helper tests go in `test/helpers`, mailer tests go in `test/mailers`, and acceptance tests go in `test/acceptance`. Like Rspec the locations are based on what is being tested.
 
 Now my model, helper, controller, and mailer tests can live where I consider is logical. I also find this layout more discoverable. For instance, I don't have to explain the layout when introducing Rails or testing to new developers.
 
