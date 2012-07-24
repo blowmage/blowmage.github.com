@@ -1,5 +1,5 @@
 jQuery(function($) {
-  var ponies = Array('hug.png', 'sunglasses.png');
+  var ponies = Array('hug.png', 'sunglasses.png', 'mane6.png');
   var pony   = ponies[Math.floor(Math.random()*ponies.length)];
   $('body').append('<img id="p0n13s" src="/images/ponies/' + pony + '" style="position:fixed;bottom:0;right:0;height:300px;">');
   $('body > div.wrapper > section').append('<div id="pwnies"></div>');
