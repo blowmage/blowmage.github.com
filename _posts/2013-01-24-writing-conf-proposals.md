@@ -27,7 +27,7 @@ This is the meat of the proposal. Its common for conferences to print this in th
 
 **Keep it brief.** It's unfair to ask a reader to parse through 3 paragraphs setting up a scenario that the session will address. A person ought to be able to scan the description and feel confident about what will be covered.
 
-**Avoid lists.** Sticking with the "why" is where the power of your proposal comes from. Some may disagree with this guideline, but if your proposal contains lists (or more than two paragraphs), it's a strong indicator that you're diving deeper into the "what" than the "why". (Yes, I understand the irony of giving the advise to not use lists in a list. But this blog post isn't a conference proposal either.)
+**Avoid lists.** Sticking with the "why" is where the power of your proposal comes from. Some may disagree with this guideline, but if your proposal contains lists (or more than two paragraphs), it's a strong indicator that you're diving deeper into the "what" than the "why". (Yes, I understand the irony of giving the advice to not use lists in a list. But this blog post isn't a conference proposal either.)
 
 **Make it topical.** Consider the audience and the theme of the conference. If you are submitting to a Python conference, then it's probably not a good idea to submit a proposal on Lisp. Yes, you may think that the audience should all hear how Lisp is great, but will the attendees care? Does the selection committee? If the conference clearly states that they intend to be as beginner-friendly as possible, then your dive into the subtle details of natural language processing libraries is unlikely to be accepted, no matter how great a talk it would be.
 
@@ -51,4 +51,4 @@ Most organizers or selection committees don't care as much about the biography o
 
 If you're looking to inject humor, my opinion is that your best bet is to play it straight in your proposal and go for broke on humor in your bio.
 
-I hope this helps. I understand how frustrating it can be to spend so much time and energy on a proposal only to be shattered when it isn't accepted. My advise is to play for the long term. Pay attention to what ends up in the conference sessions and figure out where you can differentiate yourself while adding value. Speak at user groups. Attend a [Toastmasters](http://www.toastmasters.org/) meeting. Write a book. You will only get better.
+I hope this helps. I understand how frustrating it can be to spend so much time and energy on a proposal only to be shattered when it isn't accepted. My advice is to play for the long term. Pay attention to what ends up in the conference sessions and figure out where you can differentiate yourself while adding value. Speak at user groups. Attend a [Toastmasters](http://www.toastmasters.org/) meeting. Write a book. You will only get better.
