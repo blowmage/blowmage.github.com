@@ -5,9 +5,9 @@ desc:   The one where I explain why I still like you even thought I didn't accep
 reddit: true
 hackernews: true
 ---
-I run a small but successful [Ruby conference](http://mtnwestrubyconf.org/). Its a difficult and draining experience, but I'm generally very happy doing it. We select the majority of our sessions from proposals submitted by folks just like you. One of my least favorite parts of running the conference is letting folks know there proposal was not selected. I had to do that today.
+I run a small but successful [Ruby conference](http://mtnwestrubyconf.org/). It is a difficult and draining experience, but I'm generally very happy doing it. We select the majority of our sessions from proposals submitted by folks just like you. One of my least favorite parts of running the conference is letting folks know there proposal was not selected. I had to do that today.
 
-Every year folks ask why they didn't get selected. Sometimes they ask me, sometimes they ask themselves loudly on twitter. My conference has a very specific type of session its looking for, sort of a niche of a niche. But more often than not the proposals that are not seriously considered are not off topic as much as they are poorly written. I've been on all sides of this, as a speaker that has been accepted, a speaker that has not been selected, and an organizer. So here are some thoughts from the mind of a conference organizer on what makes a good conference proposal.
+Every year folks ask why they didn't get selected. Sometimes they ask me, sometimes they ask themselves loudly on twitter. My conference has a very specific type of session it's looking for, sort of a niche of a niche. But more often than not the proposals that are not seriously considered are not off topic as much as they are poorly written. I've been on all sides of this, as a speaker that has been accepted, a speaker that has not been selected, and an organizer. So here are some thoughts from the mind of a conference organizer on what makes a good conference proposal.
 
 Make the title good
 -------------------
@@ -21,7 +21,7 @@ Make the title good
 Description/Abstract
 --------------------
 
-This is the meat of the proposal. Its common for conferences to print this in the program unchanged. So consider that this needs to appeal not just to the selection committee, but to conference attendees as well.
+This is the meat of the proposal. It's common for conferences to print this in the program unchanged. So consider that this needs to appeal not just to the selection committee, but to conference attendees as well.
 
 **Focus on the outcome.** What will attendees know by the end of the session? Describing the benefits of the session is much more effective than the mechanics of what the session will cover.
 
@@ -40,7 +40,7 @@ Some CFPs allow you to enter some text only to be read and considered by the sel
 
 **Stop selling.** Any selection member has already read through dozens or hundreds of proposals all vying for their attention. This isn't the place for the hard sell. This is the place to level with the selection member. Is this only aimed at basket weaving beginners with extensive underwater experience? Then state that here. 
 
-**Explain the destination.** Are you intentionally trying to sell one thing in your description because its popular, but then expose it as flawed during your session? Let the selection members know. If you have a hard time quantifying where attendees are going to be at the end of your session, you might have a problem with your proposal.
+**Explain the destination.** Are you intentionally trying to sell one thing in your description because it's popular, but then expose it as flawed during your session? Let the selection members know. If you have a hard time quantifying where attendees are going to be at the end of your session, you might have a problem with your proposal.
 
 **Thank them.** Do you like their conference? Have you been there before? What do you like about it? More than kissing up, it shows you understand the kind of conference the organizers are striving for. It's not a good place to rant about what is wrong with the conference, the community, or the world.
 
