@@ -17,7 +17,7 @@ The Discourse application is using RSpec, so we'll create a new file for our new
 
     spec/controllers/users_controller/search_users_spec.rb
 
-I choose to create a new test file instead of adding a new context to the existing UsersController test for a couple reasons: First, because the new tests are going to be specific to the search logic, the data setup will be much different. And second, I dislike traversing a spec file hundreds or thousands of lines long looking for the right nested block. I do, however, have lots of experience traversing directories and find files.
+I choose to create a new test file instead of adding a new context to the existing UsersController test for a couple reasons: First, because the new tests are going to be specific to the search logic, the data setup will be much different. And second, I dislike traversing a spec file hundreds or thousands of lines long looking for the right nested block. I do, however, have lots of experience traversing directories and finding files.
 
 The search logic itself is pretty simple. It performs a search using PostgreSQL's full text capabilities. The only real complexity is in how the results are sorted. The closest matches are sorted first. If a topic is provided then those users with posts on the topic will be ranked higher than those without. So the question is how to add test coverage?
 
