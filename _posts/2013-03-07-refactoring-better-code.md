@@ -23,7 +23,7 @@ The search logic itself is pretty simple. It performs a search using PostgreSQL'
 
 The approach I'm using here is slow. I'm more concerned with correctness of the behavior than the speed of the tests at the moment. But I am confident these tests will be revisited and improved for speed later, so let's make the tests as clear as we can.
 
-Pasting all the tests here isn't too interesting. You can view the full commit here: [Add test coverage for UsersController#search_users](https://github.com/blowmage/discourse/commit/1a1d6fcfb9455a9ffdec7dfedcfbb09979683736)
+Pasting all the tests here isn't too interesting. You can view the full commit here: [Add test coverage for UsersController#search_users](https://github.com/blowmage/discourse/commit/01367275957146769c79ae5d4f9e7c2a1b9ab9ec)
 
 Now that we have tests, I want to move the bulk of search logic from UsersController#search_users to a model. The reason is because the majority of the code specific to the implementation. Ideally, I want to be able to change the implementation of my search without having to change the controller code. I don't want to move even more code to the poor User model; it looks far too bloated already. Instead, lets create a new domain model. I want this new model to just be responsible for the User search, so let's call it UserSearch.
 
@@ -118,7 +118,7 @@ Some might wonder why this new object doesn't go in the lib directory instead. F
 
 Another question some may have is why `UserSearch` doesn't inherit from `ActiveRecord`. Well, this new domain model isn't going to be responsible for representing a `User` record; its job is to search for those records. Not every model in your domain needs to inherit from `ActiveRecord`. As apps grow larger I find its better to have more and more of my domain logic outside of the `ActiveRecord` models and in other domain models.
 
-You can view the full commit here: [Extract search logic to UserSearch model](https://github.com/blowmage/discourse/commit/b97f1153662fad389f55227857f1eb081d1d8f91)
+You can view the full commit here: [Extract search logic to UserSearch model](https://github.com/blowmage/discourse/commit/972b9d735c9bc07963d77cc53a07ef9bbe0a0e45)
 
 With this move the tests still pass. Notice I don't have any unit tests for the `UserSearch` object yet. I could add some, but they would only be duplicates of the `search_users` test. So for now I'm going to allow those `search_users` tests to act as acceptance tests for `UserSearch`. I have some ideas for what I eventually want this object to be and do, so I'm skipping the tests for just a bit, while I experiment a bit more.
 
@@ -215,7 +215,7 @@ Now that the controller is more declarative and less instructional, let's see if
  end
 {% endhighlight %}
 
-You can view the full commit here: [Extract SQL generation method](https://github.com/blowmage/discourse/commit/6033b44c5ad85568eec0fcd0ddbff76b39346414)
+You can view the full commit here: [Extract SQL generation method](https://github.com/blowmage/discourse/commit/1cd565ec0d04c6b26896145eba603eb60fc982fc)
 
 That seems to be clearer for me, and all the SQL string concatenation is isolated into one method. If a new mechanism was introduced to generate the SQL string, only `UserSearch.sql` would have to change.
 
@@ -293,7 +293,7 @@ The second change is to properly serialize the objects to JSON and match the exi
    end
 {% endhighlight %}
 
-You can view the full commit here: [Return User objects instead of hashes](https://github.com/blowmage/discourse/commit/f89038791546e41d953186ec2ffd5d9ed0773914)
+You can view the full commit here: [Return User objects instead of hashes](https://github.com/blowmage/discourse/commit/5b01ac92880e8468f012abd2c844f63dd0db5b7a)
 
 And the tests still pass.
 
@@ -315,13 +315,13 @@ There are a couple more things that stand out to me. The fact that we are downca
      topic_id = topic_id.to_i if topic_id
 {% endhighlight %}
 
-You can view the full commit here: [Remove expectation of term case](https://github.com/blowmage/discourse/commit/a315e29c41a9b2dc0746f3ba8ace93c3c607bb58)
+You can view the full commit here: [Remove expectation of term case](https://github.com/blowmage/discourse/commit/e41b6537f94805d778d9420a66fe15dd34d8d319)
 
 Now I am generally happy with the state of the code, and its time to focus on the state of the tests. All of our test coverage is in the controller tests. Controller tests are integration tests, and I dislike having this much detail specified in the controller tests. I like my controller tests to check that the actions are responding as expected, and to do little more than a sanity check that the data returned in as expected. In other words, the integration tests make sure that the integration works. If the data is important enough to be tested, then it should be extracted to its own object and unit tested there. Luckily we have just that with our new `UserSearch` object.
 
 So my next commit is to move the bulk of the behavior tests for the UserSearch to the new `spec/models/user_search_spec.rb` file. I'll also remove the previous `search_users` test file and add some very general tests to the `spec/controllers/user_controller_spec.rb` file. Yes, I know I said I like separate files for my tests, but this isn't my project so I'm going to try to follow their conventions in the pull request as much as possible.
 
-Lots of changes here. You can view the full commit here: [Refactor UserSearch tests](https://github.com/blowmage/discourse/commit/e1d097e69c2d0ae6f65d4ed52c082d72dcf7f3cc)
+Lots of changes here. You can view the full commit here: [Refactor UserSearch tests](https://github.com/blowmage/discourse/commit/d72c26ff92fd0ba56a8d5fd6e447fb4a00824679)
 
 I think this is where I'll leave this refactor for now. `UserSearch.search` still returns an array, but now it is an array of User objects and not an array of hashes. A next step would be to return an `ActiveRecord::Relation` object, so that additional criteria could be added, such as pagination. That would move the query away from the specific SQL statements, and I'm not sure that the developer is ready for this change just yet. Hopefully the advantages of passing an `ActiveRecord::Relation` object instead of an array will change the maintainers' minds in the future.
 
