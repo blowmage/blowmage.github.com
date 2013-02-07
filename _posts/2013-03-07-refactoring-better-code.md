@@ -11,7 +11,7 @@ I caught a bit of heat yesterday for [a retweet](https://twitter.com/aarongraves
 
 The code in question is the implementation of the `UsersController#search_users` action. This action is not super critical to the running of the site. The changes I'll be showing here do not represent an unrolling of any significant performance optimization, AFAIK. I am going to attempt to perform a true refactor: improving the internals of the code without affecting the external behavior, _including_ performance.
 
-The first step is to make sure that we have adequate code coverage to perform a refactor. We need to know if we have changed any behavior accidentally, or introduced a logical error in our new code. Unfortunately, there are no existing tests for this action. So our first step is to add those test.
+The first step is to make sure that we have adequate code coverage to perform a refactor. We need to know if we have changed any behavior accidentally, or introduced a logical error in our new code. Unfortunately, there are no existing tests for this action. So our first step is to add those tests.
 
 The Discourse application is using RSpec, so we'll create a new file for our new tests:
 
