@@ -1,7 +1,7 @@
 ---
 title:  'Refactoring towards "better" code'
 layout: post
-desc:   The one where I wax profound on what makes code good, complete with examples.
+desc:   The one about code quality, Discourse, ruby drama, and redemption.
 reddit: true
 hackernews: true
 permalink: 2013/03/07/refactoring-better-code.html
