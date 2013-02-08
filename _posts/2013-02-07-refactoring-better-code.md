@@ -4,6 +4,7 @@ layout: post
 desc:   The one where I wax profound on what makes code good, complete with examples.
 reddit: true
 hackernews: true
+permalink: 2013/03/07/refactoring-better-code.html
 ---
 What makes code good? How do you quantify code quality? I'm not talking metrics, I'm talking good old gut feel. How do know good code when you see it? Certainly, working code is better than non-working code. But laying that aside; if two codebases work as expected, how do you judge which is better? Instead of talking about how I make that judgement, how about I show you?
 
