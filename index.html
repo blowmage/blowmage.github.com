@@ -3,20 +3,20 @@ layout: home
 title:  "::blowmage::"
 ---
 {% for post in site.posts limit:1 %}
-<article>
-<h1><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h1>
-{{ post.content }}
-<p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
-</article>
+  <article>
+    <h1><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h1>
+    <p>{{ post.desc | textilize }}</p>
+    <p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
+  </article>
 {% endfor %}
-{% for post in site.posts limit:4 offset:1 %}
-<article>
-<h1><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h1>
-{{ post.desc | textilize }}
-<p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
-</article>
+{% for post in site.posts limit:7 offset:1 %}
+  <article>
+    <h2><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h2>
+    <p>{{ post.desc | textilize }}</p>
+    <p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
+  </article>
 {% endfor %}
-<p><em>Find more bloggy stuff in my <a href="/archives" rel="archives">annals</a></em></p>
+<p>Want <em>even more</em> bloggy stuff? Go exploring in my <a href="/archives" rel="archives">annals</a></p>
 
 <script>
 var disqus_shortname = 'blowmage';
