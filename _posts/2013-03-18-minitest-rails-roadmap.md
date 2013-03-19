@@ -7,26 +7,26 @@ hackernews: true
 ---
 **tl;dr**: *The newest [minitest](https://github.com/seattlerb/minitest) and [minitest-rails](https://github.com/blowmage/minitest-rails) are awesome.*
 
-I've been working on the [minitest-rails](http://blowmage.com/minitest-rails) project for almost two years now. That is a terribly long time to work on a project without having a stable release. Fortunately with the [0.9 release](https://rubygems.org/gems/minitest-rails/versions/0.9.0), which came out earlier tonight, we are on our way to stability.
+I've been working on the [minitest-rails](http://blowmage.com/minitest-rails) project for almost two years now. That is a very long time to work on a project without having a stable release. Fortunately with the [0.9 release](https://rubygems.org/gems/minitest-rails/versions/0.9.0)that I released earlier tonight we are on our way to stability.
 
 The Problem
 -----------
 
-Inheritance is great, except when it isn't. All Rails tests inherit from ActiveSupport::TestCase. In Rails 3, ActiveSupport::TestCase inherits from Test::Unit::TestCase, which inherits from MiniTest::Unit::TestCase in Ruby 1.9 and higher. Or, if you are on Ruby 1.8 you can install the [minitest_tu_shim](https://github.com/seattlerb/minitest_tu_shim) gem to inject minitest into the inheritance chain.
+Inheritance is great, except when it isn't. All Rails tests inherit from [ActiveSupport::TestCase](https://github.com/rails/rails/blob/master/activesupport/lib/active_support/test_case.rb). In Rails 3, ActiveSupport::TestCase inherits from Test::Unit::TestCase, which inherits from MiniTest::Unit::TestCase. (In Ruby 1.9 and higher. If you are on Ruby 1.8 you can install the [minitest_tu_shim](https://github.com/seattlerb/minitest_tu_shim) gem to inject minitest into the inheritance chain.)
 
-What we want, however, is to inherit from MiniTest::Spec. In fact, for almost a year during the development of Rails 4 ActiveSupport::TestCase [inherited](https://github.com/rails/rails/commit/1c09c29a0958eac86fffede00f30a1bee36d09a9#L1L11) from MiniTest::Spec. Unfortunately, that was [changed](https://github.com/rails/rails/commit/eb4930e3c724cf71d6ce5bb2aec4af82b2025b03#L4L19) before the first beta gem was released and it now inherits directly from MiniTest::Unit::TestCase. (Which is disappointing but totally appropriate for the core team to do. It's their project, and they should do what they think is best, always.) So what do we do? How can we change the nature of the Rails tests? Time to roll up our sleeves and get hacky!
+What we want, however, is to inherit from MiniTest::Spec. In fact, for almost a year during the development of Rails 4 ActiveSupport::TestCase [inheritedd](https://github.com/rails/rails/commit/1c09c29a0958eac86fffede00f30a1bee36d09a9#L1L11) from MiniTest::Spec. Unfortunately, that was [changed](https://github.com/rails/rails/commit/eb4930e3c724cf71d6ce5bb2aec4af82b2025b03#L4L19) before the first beta gem was released and it now inherits directly from MiniTest::Unit::TestCase. (Which is disappointing but totally appropriate for the core team to do. It's their project, and they should do what they think is best, always.) So what do we do? How can we change the nature of the Rails tests? Time to roll up our sleeves and get hacky!
 
 A Terrible Solution
 -------------------
 
-One terrible solution is to change the ancestry of the ActiveSupport::TestCase and inject MiniTest::Spec. For [minitest-rails](https://github.com/blowmage/minitest-rails) this has meant creating a MiniTest::Rails::TestCase that inherits from MiniTest::Spec and includes all the Rails testing modules. For [minitest-spec-rails](https://github.com/metaskills/minitest-spec-rails) this has meant replacing Test::Unit::TestCase with an implementation that inherits from MiniTest::Spec.
+One suboptimal solution is to change the ancestry of the ActiveSupport::TestCase and inject MiniTest::Spec. For [minitest-rails](https://github.com/blowmage/minitest-rails) this meant creating a [MiniTest::Rails::TestCase](https://github.com/blowmage/minitest-rails/blob/v0.5.2/lib/minitest/rails/test_case.rb) that inherits from MiniTest::Spec and includes all the Rails testing modules. For [minitest-spec-rails](https://github.com/metaskills/minitest-spec-rails) this meant similarly replacing Test::Unit::TestCase with an implementation that inherits from MiniTest::Spec.
 
-This approach generally works, but you have to be very careful in how you load the libraries that are getting replaced. You can replace a constant in Ruby, but if another object is inheriting from the object you replaced, it will continue to inherit from that even after you replace the constant. Problems arise when some other library affects your carefully planned hack, which is ultimately inevitable. And don't even get me started on Rails 3's `threadsafe!` option.
+This approach generally works, but you have to be very careful in how you load the libraries that are getting replaced. You can replace a constant in Ruby, but if another object is already inheriting from the replaced object it will continue to inherit from it even after the constant is replaced. Problems arise when other libraries affect how code is loaded, and upend your carefully planned hack. And ultimately that is inevitable. (Don't even get me started on what Rails 3's `threadsafe!` option does to how code is loaded.)
 
 A Sustainable Solution
 ----------------------
 
-What we really need is to be able to enable the MiniTest::Spec functionality without altering the ancestry. But how? Instead of using Ruby meta-programming for evil, how about we use it for good. Imagine if this worked:
+What we really need is to enable MiniTest::Spec functionality without altering the ancestry. But how? Instead of using Ruby meta-programming for evil, how about we use it for good? Imagine if this worked:
 
 {% highlight ruby %}
 class ActiveSupport::TestCase
@@ -34,7 +34,7 @@ class ActiveSupport::TestCase
 end
 {% endhighlight %}
 
-Well, with the latest release of minitest that's the case. Ryan Davis added the ability to enable the spec DSL on any minitest TestCase. This means that this is functionally equivalent:
+With the latest release of minitest that's the case. [Ryan Davis](http://zenspider.com/) added the ability to enable the spec DSL on any minitest TestCase. This means that this is functionally equivalent:
 
 {% highlight ruby %}
 class TestMyStuff < MiniTest::Spec
@@ -52,12 +52,12 @@ class TestMyStuffAgain < MiniTest::Test::Unit
 end
 {% endhighlight %}
 
-It turns out because of how well MiniTest::Spec was designed this was a fairly easy change to make. I love working in code that Ryan produces because this is generally the case.
+Because of how MiniTest::Spec was designed this was an easy change to make. I love working in code that Ryan produces because this is generally the case.
 
 The Unlimited Possibilities
 ---------------------------
 
-This change means that supporting minitest's spec DSL is suddenly trivial. Specifying the version of minitest in your Rails project's Gemfile and including the following in your test helper enables the DSL:
+This change means that supporting minitest's spec DSL is suddenly trivial. Even for older Rails 2.x apps! Specifying the version of minitest in your Rails project's Gemfile and including the following in your test helper enables the DSL:
 
 {% highlight ruby %}
 require "minitest/spec"
@@ -85,9 +85,11 @@ class ActionController::TestCase
 end
 {% endhighlight %}
 
-And so on. But there is another piece. Controller and Helper and Mailer tests also attempt to deduce and create an instance of the controller or helper or mailer from the name of the test. This is a bit more involved, and currently minitest-rails uses [MiniTest::Rails::Testing::ConstantLookup](https://github.com/blowmage/minitest-rails/blob/v0.9/lib/minitest/rails/constant_lookup.rb) to resolve the constant from the test name.
+And so on. But there is another piece. Controller/Helper/Mailer tests also attempt to deduce the test subject from the test name to create an instance in the test. This is a bit more involved, and currently minitest-rails uses [MiniTest::Rails::Testing::ConstantLookup](https://github.com/blowmage/minitest-rails/blob/v0.9/lib/minitest/rails/constant_lookup.rb) to resolve the constant from the test name.
 
-What this means is that instead of hacking how Rails loads code, we can declare how we want our tests configured. This is a huge step forward. Fortunately, all this and more is included with minitest-rails, which is the easiest way to use advanced minitest functionality within your Rails app. (End sales pitch.)
+There are other little incompatibilities that need to be addressed to enable the spec DSL in your Rails apps. Fortunately, all this and more is included with minitest-rails, which is the easiest way to use advanced minitest functionality within your Rails app. (End sales pitch.)
+
+What this means is that instead of minitest-rails hacking how Rails loads code, it can just declare how we want our tests configured. This is a huge step forward.
 
 Upgrade Path
 ------------
