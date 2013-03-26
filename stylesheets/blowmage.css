@@ -230,3 +230,35 @@ footer {
     color:#444;
   }
 }
+
+body#home > div.wrapper > header h1 {
+  color: #069;
+  text-shadow: 1px 1px 1px #000;
+}
+
+body#home > div.wrapper > section article {
+  color: #000;
+  margin: 8px;
+  padding: 8px;
+  background-color:rgba(255,255,255,0.65);
+}
+
+body#home > div.wrapper > section article a {
+  color: #069;
+}
+
+body#home > div.wrapper > section > p,
+body#home > div.wrapper > section > p a {
+  color: #069;
+  font-weight:700;
+}
+
+body#home > div.wrapper > footer {
+  color: #000;
+  padding: 8px;
+  background-color:rgba(255,255,255,0.65);
+}
+
+body#home > div.wrapper > footer a {
+  color: #069;
+}
