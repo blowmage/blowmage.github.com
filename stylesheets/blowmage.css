@@ -264,3 +264,9 @@ body#home > div.wrapper > footer {
 body#home > div.wrapper > footer a {
   color: #069;
 }
+
+body#post header, body#post section, body#post footer {
+  float:none;
+  position:static;
+  width:auto;
+}
