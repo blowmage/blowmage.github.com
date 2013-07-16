@@ -14,9 +14,11 @@ Step 1: Setting the Minitest Dependency
 
 Rails 4 sets the dependency on Minitest to "~> 4.2". This means that it will use any Minitest 4.x release that is 4.2 or above. This also means that we can't use the newly released Minitest 5, or the older 4.1. Since we want the spec DSL, we need to set the dependency to "~> 4.7". To do that, let's set the dependency in the Gemfile:
 
-    group :test do
-      gem "minitest", "~> 4.7"
-    end
+{% highlight ruby %}
+group :test do
+  gem "minitest", "~> 4.7"
+end
+{% endhighlight %}
 
 Step 2: Extending MiniTest::Spec::DSL
 -------------------------------------
@@ -25,151 +27,169 @@ Minitest 4.7 introduced the MiniTest::Spec::DSL module. To add the spec DSL to o
 
 Let's require the source file just after the `rails/test_help` require:
 
-    ENV["RAILS_ENV"] ||= "test"
-    require File.expand_path('../../config/environment', __FILE__)
-    require 'rails/test_help'
-    require "minitest/spec"
+{% highlight ruby %}
+ENV["RAILS_ENV"] ||= "test"
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
+require "minitest/spec"
+{% endhighlight %}
 
 The second change is to extend MiniTest::Spec::DSL in ActiveSupport::TestClass. Luckily for us, there is already a place in the helper for us to make these changes:
 
-    class ActiveSupport::TestCase
-      ActiveRecord::Migration.check_pending!
+{% highlight ruby %}
+class ActiveSupport::TestCase
+  ActiveRecord::Migration.check_pending!
 
-      # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-      #
-      # Note: You'll currently still have to declare fixtures explicitly in integration tests
-      # -- they do not yet inherit this setting
-      fixtures :all
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  #
+  # Note: You'll currently still have to declare fixtures explicitly in integration tests
+  # -- they do not yet inherit this setting
+  fixtures :all
 
-      # Add more helper methods to be used by all tests here...
-      extend MiniTest::Spec::DSL
-    end
+  # Add more helper methods to be used by all tests here...
+  extend MiniTest::Spec::DSL
+end
+{% endhighlight %}
 
 **Cool Minitest trick #1: `register_spec_type`**
 
 The last change is to tell MiniTest::Spec to use ActiveSupport::TestCase when describing an ActiveRecord model. We do this by calling Minitest's [register_spec_type](http://rubydoc.info/gems/minitest/4.7.5/MiniTest/Spec/DSL#register_spec_type-instance_method) method.
 
-    class ActiveSupport::TestCase
-      ActiveRecord::Migration.check_pending!
+{% highlight ruby %}
+class ActiveSupport::TestCase
+  ActiveRecord::Migration.check_pending!
 
-      # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-      #
-      # Note: You'll currently still have to declare fixtures explicitly in integration tests
-      # -- they do not yet inherit this setting
-      fixtures :all
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  #
+  # Note: You'll currently still have to declare fixtures explicitly in integration tests
+  # -- they do not yet inherit this setting
+  fixtures :all
 
-      # Add more helper methods to be used by all tests here...
-      extend MiniTest::Spec::DSL
+  # Add more helper methods to be used by all tests here...
+  extend MiniTest::Spec::DSL
 
-      register_spec_type self do |desc|
-        desc < ActiveRecord::Base if desc.is_a? Class
-      end
-    end
+  register_spec_type self do |desc|
+    desc < ActiveRecord::Base if desc.is_a? Class
+  end
+end
+{% endhighlight %}
 
 Step 3: Writing Specs
 ---------------------
 
 Now that we've configured the spec DSL, let's use it! Let's assume we have the following test in `test/models/user_test.rb`:
 
-    require "test_helper"
+{% highlight ruby %}
+require "test_helper"
 
-    class UserTest < ActiveSupport::TestCase
+class UserTest < ActiveSupport::TestCase
 
-      def valid_params 
-        { name: "John Doe", email: "john@example.com" }
-      end
+  def valid_params 
+    { name: "John Doe", email: "john@example.com" }
+  end
 
-      def test_valid
-        user = User.new valid_params
+  def test_valid
+    user = User.new valid_params
 
-        assert user.valid?, "Can't create with valid params: #{user.errors.messages}"
-      end
+    assert user.valid?, "Can't create with valid params: #{user.errors.messages}"
+  end
 
-      def test_invalid_without_email
-        params = valid_params.clone
-        params.delete :email
-        user = User.new params
+  def test_invalid_without_email
+    params = valid_params.clone
+    params.delete :email
+    user = User.new params
 
-        refute user.valid?, "Can't be valid without email"
-        assert user.errors[:email], "Missing error when without email"
-      end
-    
-    end
+    refute user.valid?, "Can't be valid without email"
+    assert user.errors[:email], "Missing error when without email"
+  end
+
+end
+{% endhighlight %}
 
 We can convert this test to the spec DSL one section at a time. Let's start with replacing the class with a `describe` block:
 
-    require "test_helper"
+{% highlight ruby %}
+require "test_helper"
 
-    describe User do
+describe User do
 
-      def valid_params 
-        { name: "John Doe", email: "john@example.com" }
-      end
+  def valid_params 
+    { name: "John Doe", email: "john@example.com" }
+  end
+{% endhighlight %}
 
 We can bypass the need to explicitly define a class inheriting from `ActiveSupport::TestCase` because User inherits from ActiveRecord and we registered the spec type in the previous step.
 
 Next we can replace the test methods with `it` blocks:
 
-    def valid_params 
-      { name: "John Doe", email: "john@example.com" }
-    end
+{% highlight ruby %}
+def valid_params 
+  { name: "John Doe", email: "john@example.com" }
+end
 
-    it "is valid with valid params" do
-      user = User.new valid_params
+it "is valid with valid params" do
+  user = User.new valid_params
 
-      assert user.valid?, "Can't create with valid params: #{user.errors.messages}"
-    end
+  assert user.valid?, "Can't create with valid params: #{user.errors.messages}"
+end
 
-    it "is invalid without an email" do
-      params = valid_params.clone
-      params.delete :email
-      user = User.new params
+it "is invalid without an email" do
+  params = valid_params.clone
+  params.delete :email
+  user = User.new params
 
-      refute user.valid?, "Can't be valid without email"
-      assert user.errors[:email], "Missing error when without email"
-    end
+  refute user.valid?, "Can't be valid without email"
+  assert user.errors[:email], "Missing error when without email"
+end
+{% endhighlight %}
 
 Now let's replace the calls to the assertions with Minitest's expectations. In the first test block, we are passing `user.valid?` to `assert`. The spec DSL provides many assertions as expectations, and in this case we can write this test using the `must_be` expectation. That would look like this:
 
-    it "is valid with valid params" do
-      user = User.new valid_params
+{% highlight ruby %}
+it "is valid with valid params" do
+  user = User.new valid_params
 
-      user.must_be :valid? # Must create with valid params
-    end  
+  user.must_be :valid? # Must create with valid params
+end
+{% endhighlight %}
 
 In the next test block, we are refuting that the user is valid. We can use the `wont_be` expectation for that. And then we are asserting that there are errors on the email attribute. We can use a combination of the `must_be` expectation and the `present?` method Rails adds to clean that up a bit:
 
-    it "is invalid without an email" do
-      params = valid_params.clone
-      params.delete :email
-      user = User.new params
+{% highlight ruby %}
+it "is invalid without an email" do
+  params = valid_params.clone
+  params.delete :email
+  user = User.new params
 
-      user.wont_be :valid? #Must not be valid without email
-      user.errors[:email].must_be :present? # Must have error for missing email
-    end
+  user.wont_be :valid? #Must not be valid without email
+  user.errors[:email].must_be :present? # Must have error for missing email
+end
+{% endhighlight %}
 
 We can also move some helper methods to `let` blocks. In the end, here is what the test can look like using the spec DSL:
 
-    require "test_helper"
+{% highlight ruby %}
+require "test_helper"
 
-    describe User do
+describe User do
 
-      let(:user_params) { { name: "John Doe", email: "john@example.com" } }
-      let(:user) { User.new user_params }
+  let(:user_params) { { name: "John Doe", email: "john@example.com" } }
+  let(:user) { User.new user_params }
 
-      it "is valid with valid params" do
-        user.must_be :valid? # Must create with valid params
-      end
+  it "is valid with valid params" do
+    user.must_be :valid? # Must create with valid params
+  end
 
-      it "is invalid without an email" do
-        # Delete email before user let is called
-        user_params.delete :email
+  it "is invalid without an email" do
+    # Delete email before user let is called
+    user_params.delete :email
 
-        user.wont_be :valid? # Must not be valid without email
-        user.errors[:email].must_be :present? # Must have error for missing email
-      end
+    user.wont_be :valid? # Must not be valid without email
+    user.errors[:email].must_be :present? # Must have error for missing email
+  end
 
-    end
+end
+{% endhighlight %}
 
 Step 4: Smoothing The Rough Edges
 ---------------------------------
@@ -178,26 +198,28 @@ The Minitest spec DSL does not support nested `context` blocks, but it does supp
 
 But wait, this is Ruby! To use nested `describe` blocks in your tests, we just need to remove the method from ActiveSupport::TestCase. To do this, add a call to `remove_method` just before MiniTest::Spec::DSL is added in the test helper:
 
-    class ActiveSupport::TestCase
-      ActiveRecord::Migration.check_pending!
+{% highlight ruby %}
+class ActiveSupport::TestCase
+  ActiveRecord::Migration.check_pending!
 
-      # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-      #
-      # Note: You'll currently still have to declare fixtures explicitly in integration tests
-      # -- they do not yet inherit this setting
-      fixtures :all
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  #
+  # Note: You'll currently still have to declare fixtures explicitly in integration tests
+  # -- they do not yet inherit this setting
+  fixtures :all
 
-      # Add more helper methods to be used by all tests here...
-      class << self
-        remove_method :describe
-      end
+  # Add more helper methods to be used by all tests here...
+  class << self
+    remove_method :describe
+  end
 
-      extend MiniTest::Spec::DSL
+  extend MiniTest::Spec::DSL
 
-      register_spec_type self do |desc|
-        desc < ActiveRecord::Base if desc.is_a? Class
-      end
-    end
+  register_spec_type self do |desc|
+    desc < ActiveRecord::Base if desc.is_a? Class
+  end
+end
+{% endhighlight %}
 
 If you prefer expectations to assertions, we'll need to add expectations for the several assertions that Rails provides, such as `assert_response`, `assert_redirected_to`, and `assert_difference`. We can do all this in the test helper file.
 
@@ -205,22 +227,28 @@ If you prefer expectations to assertions, we'll need to add expectations for the
 
 First, create a new module and use the method [infect_an_assertion](http://rubydoc.info/gems/minitest/4.7.5/Module#infect_an_assertion-instance_method) that Minitest provides:
 
-    module MyApp::Expectations
-      infect_an_assertion :assert_difference, :must_change
-      infect_an_assertion :assert_no_difference, :wont_change
-    end
+{% highlight ruby %}
+module MyApp::Expectations
+  infect_an_assertion :assert_difference, :must_change
+  infect_an_assertion :assert_no_difference, :wont_change
+end
+{% endhighlight %}
 
 Then we can include that module in Object so that those expectations are available everywhere:
 
-    class Object
-      include MyApp::Expectations
-    end
+{% highlight ruby %}
+class Object
+  include MyApp::Expectations
+end
+{% endhighlight %}
 
 Now we can use these expectations in our tests. Yay!
 
-    it "is able to be saved when valid" do
-      lambda { user.save }.must_change "User.count", +1
-    end
+{% highlight ruby %}
+it "is able to be saved when valid" do
+  lambda { user.save }.must_change "User.count", +1
+end
+{% endhighlight %}
 
 That's a Wrap!
 --------------
