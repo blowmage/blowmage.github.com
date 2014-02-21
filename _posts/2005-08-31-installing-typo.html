@@ -39,6 +39,7 @@ ActionController::Base.page_cache_directory = "/home/blowmage/public_html"
 ActionController::Base.page_cache_extension = ".html"
 {% endhighlight %}
 <p>Second, we need to tell Typo's <code>PageCache</code> class where to remove the cached entries from. (I believe this is a flaw in the current design, and I have opened a <a href="http://typo.leetsoft.com/trac/ticket/328">case</a>. As of this writing, the case has not yet been assigned.) So change the <code>typo-2.5.5/app/models/page_cache.rb</code> file to the following:</p>
+
 {% highlight ruby %}
 class PageCache < ActiveRecord::Base
 
@@ -46,6 +47,7 @@ class PageCache < ActiveRecord::Base
 #  @@public_path = RAILS_ROOT + "/public"
   @@public_path = "/home/blowmage/public_html"
 {% endhighlight %}
+
 <p>Alright, we're almost there! We just need to copy the public files to our site.</p>
 {% highlight bash %}
 $ cd ~
