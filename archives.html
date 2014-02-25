@@ -1,14 +1,24 @@
 ---
-layout: default
-title:  Explore My Annals
+layout: page
+title:  Archives
 ---
+<p class="lead">Explore My Annals</p>
+<ul class="related-posts">
 {% for post in site.posts %}
-  <article>
-    <h2><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h2>
-    <p>{{ post.desc | textilize }}</p>
-    <p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
-  </article>
+  <li>
+    <h3>
+      <a href="{{ post.url | replace:'.html','' }}">
+        {{ post.title }}
+        <small>{{ post.date | date_to_string }}</small>
+      </a><br>
+    </h3>
+    <p>
+      {{ post.desc }}
+      <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a>
+    </p>
+  </li>
 {% endfor %}
+</ul>
 
 <script>
 var disqus_shortname = 'blowmage';

@@ -1,36 +1,31 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>{{ page.title }}</title>
-    <meta name="author" content="Mike Moore">
-    <link rel="alternate" href="/feed.atom" title="::blowmage::" type="application/atom+xml">
-    <link rel="stylesheet" href="/stylesheets/blowmage.css">
-    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  {% include head.html %}
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1><a href="/">blowmage</a></h1>
-      </header>
-      <section>
-        <h1>{{ page.title }}</h1>
+
+    {% include sidebar.html %}
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">{{ site.title }}</a>
+            <small>{{ site.tagline }}</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
         {{ content }}
-      </section>
-      <footer>
-        <p>My name is Mike Moore. I like to hack with Ruby. You can <a href="http://humanecode.com/hire">hire me</a>. <a href="/about">more...</a></p>
-        <ul>
-          <li>Email: <a href="mailto:mike@blowmage.com" rel="email">mike@blowmage.com</a></li>
-          <li>Phone: <a href="tel:+1-801-541-8810" rel="tel">801.541.8810</a></li>
-        </ul>
-        <p>&copy; 2013 Mike Moore</p>
-      </footer>
+      </div>
     </div>
+
     <script src="/javascripts/scale.fix.js"></script>
     <script src="http://www.google-analytics.com/urchin.js"></script>
     <script>_uacct = "UA-73219-1"; urchinTracker();</script>

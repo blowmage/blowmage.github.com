@@ -1,13 +1,32 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>{{ page.title }}</title>
-    <meta name="author" content="Mike Moore">
-    <link rel="alternate" href="/feed.atom" title="::blowmage::" type="application/atom+xml">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+    <!-- Open-ID, because that is SOOO relevant now -->
     <link rel="openid2.provider" href="https://openid.stackexchange.com/openid/provider">
     <link rel="openid2.local_id" href="https://openid.stackexchange.com/user/34a3aa51-4282-446f-8fd8-e698c2723a71">
+
+    <title>
+      {% if page.title == "Home" %}
+        {{ site.title }} &middot; {{ site.tagline }}
+      {% else %}
+        {{ page.title }} &middot; {{ site.title }}
+      {% endif %}
+    </title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/stylesheets/poole.css">
+    <link rel="stylesheet" href="/stylesheets/lanyon.css">
+    <link rel="stylesheet" href="/stylesheets/syntax.css">
+    <link rel="stylesheet" href="/stylesheets/blowmage.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+
+    <!-- Homepage JavaScript -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="/javascripts/jquery.backstretch.js"></script>
     <script>
@@ -18,31 +37,39 @@
     </script>
     <script src="http://imakewebthings.github.com/jquery-waypoints/waypoints.min.js" charset="utf-8"></script>
     <script src="/javascripts/p0n13s.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="/stylesheets/blowmage.css">
-    <link rel="stylesheet" href="/stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+
+    <!-- Icons -->
+    <!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png"> -->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feel.atom">
   </head>
+
+
   <body id="home">
-    <div class="wrapper">
-      <header>
-        <h1>blowmage</h1>
-        <p class="avatar"><a href="http://www.flickr.com/photos/blowmage/4390027637/" title="Mike Moore - blowmage"><img src="http://farm3.staticflickr.com/2782/4390027637_cca83204a1_n.jpg" width="270" height="200" alt="Mike Moore - blowmage"></a></p>
-      </header>
-      <section>
+
+    {% include sidebar.html %}
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+          <h3 class="masthead-title">
+            <a href="/" title="Home">{{ site.title }}</a>
+            <small>{{ site.tagline }}</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
         {{ content }}
-      </section>
-      <footer>
-        <p>My name is Mike Moore. I like to hack with Ruby. You can <a href="http://humanecode.com/hire">hire me</a>. <a href="/about">more...</a></p>
-        <ul>
-          <li>Email: <a href="mailto:mike@blowmage.com" rel="email">mike@blowmage.com</a></li>
-          <li>Phone: <a href="tel:+1-801-541-8810" rel="tel">801.541.8810</a></li>
-        </ul>
-        <p>&copy; 2013 Mike Moore</p>
-      </footer>
+      </div>
     </div>
+
     <script src="/javascripts/scale.fix.js"></script>
     <script src="http://www.google-analytics.com/urchin.js"></script>
     <script>_uacct = "UA-73219-1"; urchinTracker();</script>

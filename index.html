@@ -2,21 +2,36 @@
 layout: home
 title:  "::blowmage::"
 ---
+<ul class="related-posts">
 {% for post in site.posts limit:1 %}
-  <article>
-    <h1><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h1>
-    <p>{{ post.desc | textilize }}</p>
-    <p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
-  </article>
+  <li>
+    <h2>
+      <a href="{{ post.url | replace:'.html','' }}">
+        {{ post.title }}
+        <small>{{ post.date | date_to_string }}</small>
+      </a><br>
+    </h2>
+    <p>
+      {{ post.desc }}
+      <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a>
+    </p>
+  </li>
 {% endfor %}
 {% for post in site.posts limit:7 offset:1 %}
-  <article>
-    <h2><a href="{{ post.url | replace:'.html','' }}">{{ post.title }}</a></h2>
-    <p>{{ post.desc | textilize }}</p>
-    <p>Posted {{ post.date | date_to_string }}. <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a></p>
-  </article>
+  <li>
+    <h3>
+      <a href="{{ post.url | replace:'.html','' }}">
+        {{ post.title }}
+        <small>{{ post.date | date_to_string }}</small>
+      </a><br>
+    </h3>
+    <p>
+      {{ post.desc }}
+      <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a>
+    </p>
+  </li>
 {% endfor %}
-<p><a href="/archives" rel="archives">Want <em>even more</em> bloggy stuff? Go exploring in my annals</a></p>
+</ul>
 
 <script>
 var disqus_shortname = 'blowmage';
