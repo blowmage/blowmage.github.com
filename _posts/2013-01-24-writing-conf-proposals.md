@@ -5,7 +5,7 @@ desc:   The one where I explain why I still like you even thought I didn't accep
 reddit: true
 hackernews: true
 ---
-I run a small but successful [Ruby conference](http://mtnwestrubyconf.org/). It is a difficult and draining experience, but I'm generally very happy doing it. We select the majority of our sessions from proposals submitted by folks just like you. One of my least favorite parts of running the conference is letting folks know there proposal was not selected. I had to do that today.
+I run a small but successful [Ruby conference](http://mtnwestrubyconf.org/). It is a difficult and draining experience, but I'm generally very happy doing it. We select the majority of our sessions from proposals submitted by folks just like you. One of my least favorite parts of running the conference is letting folks know their proposal was not selected. I had to do that today.
 
 Every year folks ask why they didn't get selected. Sometimes they ask me, sometimes they ask themselves loudly on twitter. My conference has a very specific type of session it's looking for, sort of a niche of a niche. But more often than not the proposals that are not seriously considered are not off topic as much as they are poorly written. I've been on all sides of this, as a speaker that has been accepted, a speaker that has not been selected, and an organizer. So here are some thoughts from the mind of a conference organizer on what makes a good conference proposal.
 
