@@ -36,4 +36,6 @@ One of the best things about the Gosu community is that there are so games you c
 
 ## Have fun!
 
-If you aren't having fun then you are doing it wrong. Seriously. Force yourself to have fun if you have to, but have some fun.
+If you're not having fun then you're doing it wrong. Seriously. Force yourself to have fun if you have to, but have some fun.
+
+![If you're not having fun then you're doing it wrong](/images/rubyfunwrong.png)
