@@ -2,8 +2,6 @@
 title:  'minitest-rails: Roadmap to 1.0'
 layout: post
 desc:   The one about getting minitest-rails ready for prime time.
-reddit: true
-hackernews: true
 ---
 **tl;dr**: *The newest [minitest](https://github.com/seattlerb/minitest) and [minitest-rails](https://github.com/blowmage/minitest-rails) are awesome.*
 

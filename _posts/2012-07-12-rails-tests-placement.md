@@ -2,12 +2,10 @@
 title:  Where to Put Tests in Rails
 layout: post
 desc:   The one where I argue that Rails places its tests wrong and propose minitest-rails as a solution.
-reddit: true
-hackernews: true
 ---
 One of the things that bothers me when developing Rails apps is where tests are placed by default. Rails puts model tests in `test/unit`, controller tests in `test/functional`, and acceptance tests in `test/integration`. But the names of those locations doesn't always match what those tests do.
 
-The three main types of tests we typically write in Rails apps are [Unit](http://c2.com/cgi/wiki?UnitTest), [Integration](http://c2.com/cgi/wiki?IntegrationTest), and [Acceptance](http://c2.com/cgi/wiki?AcceptanceTest). Unit tests work on an isolated units of code, exercising a single method or object. Integration tests work on a subsystem within an app, exercising the dependencies within the subsystem. Acceptance tests (previously known as [functional tests](http://c2.com/cgi/wiki?FunctionalTest)) work on the application as a whole to determine if it performs according to the customer's acceptance criteria. I encourage you to follow those links if you want to read more about the definitions and differences between these three types of tests. 
+The three main types of tests we typically write in Rails apps are [Unit](http://c2.com/cgi/wiki?UnitTest), [Integration](http://c2.com/cgi/wiki?IntegrationTest), and [Acceptance](http://c2.com/cgi/wiki?AcceptanceTest). Unit tests work on an isolated units of code, exercising a single method or object. Integration tests work on a subsystem within an app, exercising the dependencies within the subsystem. Acceptance tests (previously known as [functional tests](http://c2.com/cgi/wiki?FunctionalTest)) work on the application as a whole to determine if it performs according to the customer's acceptance criteria. I encourage you to follow those links if you want to read more about the definitions and differences between these three types of tests.
 
 Rails puts model tests under `test/unit`, but are they always unit tests? It is common to perform unit *and* integration tests on models, depending on what the model is responsible for and how it is designed. In my experience, many Rails apps have a problem overloading the User object with too many responsibilities and dependencies. And the tests for those dependencies are by definition integration tests. However, the location of those tests tell us that they are unit tests.
 

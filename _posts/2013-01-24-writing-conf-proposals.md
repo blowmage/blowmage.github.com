@@ -2,8 +2,6 @@
 title:  How to write a conference proposal
 layout: post
 desc:   The one where I explain why I still like you even thought I didn't accept your conference proposal.
-reddit: true
-hackernews: true
 ---
 I run a small but successful [Ruby conference](http://mtnwestrubyconf.org/). It is a difficult and draining experience, but I'm generally very happy doing it. We select the majority of our sessions from proposals submitted by folks just like you. One of my least favorite parts of running the conference is letting folks know their proposal was not selected. I had to do that today.
 
@@ -38,7 +36,7 @@ Justification
 
 Some CFPs allow you to enter some text only to be read and considered by the selection committee. If you have this available, then there are a couple things you should consider:
 
-**Stop selling.** Any selection member has already read through dozens or hundreds of proposals all vying for their attention. This isn't the place for the hard sell. This is the place to level with the selection member. Is this only aimed at basket weaving beginners with extensive underwater experience? Then state that here. 
+**Stop selling.** Any selection member has already read through dozens or hundreds of proposals all vying for their attention. This isn't the place for the hard sell. This is the place to level with the selection member. Is this only aimed at basket weaving beginners with extensive underwater experience? Then state that here.
 
 **Explain the destination.** Are you intentionally trying to sell one thing in your description because it's popular, but then expose it as flawed during your session? Let the selection members know. If you have a hard time quantifying where attendees are going to be at the end of your session, you might have a problem with your proposal.
 

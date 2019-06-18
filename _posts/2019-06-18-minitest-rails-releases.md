@@ -2,8 +2,6 @@
 title:  New minitest-rails releases (5.0, 5.1, 5.2, 6.0.0.rc1)
 layout: post
 desc:   The one where I finally release new minitest-rails versions.
-reddit: true
-hackernews: true
 ---
 Rails 6.0 is just almost here, and new features means more things to test and more ways to test them! Did someone say ["parallel testing"](https://github.com/rails/rails/pull/31900)? Because of this I've taken the opportunity to make some changes to how [minitest-rails](https://blowmage.com/minitest-rails/) is structured.
 

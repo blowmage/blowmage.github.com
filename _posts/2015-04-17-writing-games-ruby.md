@@ -2,8 +2,6 @@
 title:  Writing Games with Ruby
 layout: post
 desc:   The one where you make a game with Ruby.
-reddit: true
-hackernews: true
 ---
 The promise of making games is what brought many of us to programming. Games are fun, and writing games is fun. Crazy fun in fact. But isn't game programming hard? Yes. But also no. If you can code a web app you can make a game, especially with an awesome language like Ruby.
 
@@ -25,7 +23,7 @@ Last year I presented on writing games with Ruby using the wonderful [Gosu](http
 
 ## Read lots of Ruby game code
 
-One of the best things about the Gosu community is that there are so many examples you can learn from on GitHub. Tinkering with open-source games is a great way to understand how games work. You learn not just how to write better games, but how to write your games better. I've compiled a list of some games for you to peruse. 
+One of the best things about the Gosu community is that there are so many examples you can learn from on GitHub. Tinkering with open-source games is a great way to understand how games work. You learn not just how to write better games, but how to write your games better. I've compiled a list of some games for you to peruse.
 
 * [Gosu Examples](https://github.com/jlnr/gosu/tree/master/examples)
 * [Ruby Hop](https://github.com/blowmage/rubyhop)

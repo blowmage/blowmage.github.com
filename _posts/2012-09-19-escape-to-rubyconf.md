@@ -2,8 +2,6 @@
 title:  Escape to RubyConf!
 layout: post
 desc:   The one where I talk about wrote a game nobody ever heard about.
-reddit: true
-hackernews: true
 ---
 [RubyConf 2012](http://rubyconf.org/) is coming up. I will be there, and I'd love to hang out with you. You should come. It'll be fun. And if you are coming, you need to train. Fortunately its easy enough to do. Just type the following:
 

@@ -2,8 +2,6 @@
 title:  Adding Minitest Spec in Rails 4
 layout: post
 desc:   The one where I show how easy it is to add the Minitest spec DSL to a Rails 4 application, without using minitest-rails.
-reddit: true
-hackernews: true
 ---
 Rails 4 is out, and among its many improvements is upgrading the default testing library from Test::Unit to Minitest. And although Minitest has some surprisingly interesting features, the most discussed addition is its spec DSL. It is designed as a subset of RSpec's DSL, though I'll leave to others any direct comparisons to RSpec. Suffice it to say it its focus is to give you a friendly syntax to generate the test classes, methods, and assertions you'd normally write in plain Ruby.
 
@@ -84,7 +82,7 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
 
-  def valid_params 
+  def valid_params
     { name: "John Doe", email: "john@example.com" }
   end
 
@@ -113,7 +111,7 @@ require "test_helper"
 
 describe User do
 
-  def valid_params 
+  def valid_params
     { name: "John Doe", email: "john@example.com" }
   end
 {% endhighlight %}
@@ -123,7 +121,7 @@ We can bypass the need to explicitly define a class inheriting from `ActiveSuppo
 Next we can replace the test methods with `it` blocks:
 
 {% highlight ruby %}
-def valid_params 
+def valid_params
   { name: "John Doe", email: "john@example.com" }
 end
 

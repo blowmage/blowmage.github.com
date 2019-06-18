@@ -2,8 +2,6 @@
 title:  'Refactoring towards "better" code'
 layout: post
 desc:   The one about code quality, Discourse, ruby drama, and redemption.
-reddit: true
-hackernews: true
 permalink: /2013/03/07/refactoring-better-code.html
 ---
 What makes code good? How do you quantify code quality? I'm not talking metrics, I'm talking good old gut feel. How do know good code when you see it? Certainly, working code is better than non-working code. But laying that aside; if two codebases work as expected, how do you judge which is better? Instead of talking about how I make that judgement, how about I show you?
@@ -37,17 +35,17 @@ Now that we have tests, I want to move the bulk of search logic from UsersContro
      topic_id = topic_id.to_i if topic_id
 -    sql = "select username, name, email from users u "
 -    if topic_id
--      sql << "left join (select distinct p.user_id from posts p where topic_id = :topic_id) s on 
+-      sql << "left join (select distinct p.user_id from posts p where topic_id = :topic_id) s on
 -        s.user_id = u.id "
 -    end
 -
 -    if term.length > 0
--      sql << "where username_lower like :term_like or 
--              to_tsvector('simple', name) @@ 
+-      sql << "where username_lower like :term_like or
+-              to_tsvector('simple', name) @@
 -              to_tsquery('simple',
 -                regexp_replace(
--                  regexp_replace( 
--                    cast(plainto_tsquery(:term) as text) 
+-                  regexp_replace(
+-                    cast(plainto_tsquery(:term) as text)
 -                    ,'\''(?: |$)', ':*''', 'g'),
 -                '''', '', 'g')
 -              ) "
@@ -55,7 +53,7 @@ Now that we have tests, I want to move the bulk of search logic from UsersContro
 -    end
 -
 -    sql << "order by case when username_lower = :term then 0 else 1 end asc, "
--    if topic_id 
+-    if topic_id
 -      sql << " case when s.user_id is null then 0 else 1 end desc, "
 -    end
 -
@@ -67,7 +65,7 @@ Now that we have tests, I want to move the bulk of search logic from UsersContro
 -      r.delete("email")
 -      r
 -    end
--    render :json => results 
+-    render :json => results
 +
 +    results = UserSearch.search term, topic_id
 +    render :json => results
@@ -148,7 +146,7 @@ Now that the controller is more declarative and less instructional, let's see if
 
 {% highlight diff %}
  class UserSearch
- 
+
    def self.search term, topic_id
 -    sql = "select username, name, email from users u "
 -    if topic_id
@@ -212,7 +210,7 @@ Now that the controller is more declarative and less instructional, let's see if
 +    sql << " case when last_seen_at is null then 0 else 1 end desc, last_seen_at desc, username asc limit(20)"
 +    sql
 +  end
- 
+
  end
 {% endhighlight %}
 
@@ -226,7 +224,7 @@ The first change here is to use `User.find_by_sql` instead of `User.exec_sql`. T
 
 {% highlight diff %}
  class UserSearch
- 
+
    def self.search term, topic_id
 -    sql = sql term, topic_id
 -    results = User.exec_sql(sql, topic_id: topic_id, term_like: "#{term}%", term: term)
@@ -237,7 +235,7 @@ The first change here is to use `User.find_by_sql` instead of `User.exec_sql`. T
 -    end
 +    User.find_by_sql sql(term, topic_id)
    end
- 
+
 +  private
 +
    def self.sql term, topic_id
@@ -246,7 +244,7 @@ The first change here is to use `User.find_by_sql` instead of `User.exec_sql`. T
        sql << "left join (select distinct p.user_id from posts p where topic_id = :topic_id) s on
          s.user_id = u.id "
      end
-   
+
      if term.length > 0
        sql << "where username_lower like :term_like or
                to_tsvector('simple', name) @@
@@ -257,14 +255,14 @@ The first change here is to use `User.find_by_sql` instead of `User.exec_sql`. T
                      ,'\''(?: |$)', ':*''', 'g'),
                  '''', '', 'g')
                ) "
-   
+
      end
-   
+
      sql << "order by case when username_lower = :term then 0 else 1 end asc, "
      if topic_id
        sql << " case when s.user_id is null then 0 else 1 end desc, "
      end
-   
+
      sql << " case when last_seen_at is null then 0 else 1 end desc, last_seen_at desc, username asc limit(20)"
 -    sql
 +
@@ -274,7 +272,7 @@ The first change here is to use `User.find_by_sql` instead of `User.exec_sql`. T
 +  def self.sanitize_sql_array *args
 +    ActiveRecord::Base.send(:sanitize_sql_array, args)
    end
- 
+
  end
 {% endhighlight %}
 
