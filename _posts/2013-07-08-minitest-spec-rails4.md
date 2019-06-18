@@ -7,7 +7,7 @@ hackernews: true
 ---
 Rails 4 is out, and among its many improvements is upgrading the default testing library from Test::Unit to Minitest. And although Minitest has some surprisingly interesting features, the most discussed addition is its spec DSL. It is designed as a subset of RSpec's DSL, though I'll leave to others any direct comparisons to RSpec. Suffice it to say it its focus is to give you a friendly syntax to generate the test classes, methods, and assertions you'd normally write in plain Ruby.
 
-It'll take a little configuration, and yes, [there's a gem for that](http://blowmage.com/minitest-rails/), but the DIY approach takes surprisingly little elbow grease and will teach you a couple of cool Minitest features. Let's dive in!
+It'll take a little configuration, and yes, [there's a gem for that](https://blowmage.com/minitest-rails/), but the DIY approach takes surprisingly little elbow grease and will teach you a couple of cool Minitest features. Let's dive in!
 
 Step 1: Setting the Minitest Dependency
 ---------------------------------------
@@ -253,6 +253,6 @@ end
 That's a Wrap!
 --------------
 
-As you can see, Minitest and Rails go hand in hand. I would even go so far as to say [they are BFFs, like I did in this presentation](http://blowmage.com/2013/05/29/minitest-rails-bffs). I hope you give Minitest a shot. Don't let its size fool you. It may be small, but it's a surprisingly powerful, full-featured testing library.
+As you can see, Minitest and Rails go hand in hand. I would even go so far as to say [they are BFFs, like I did in this presentation](https://blowmage.com/2013/05/29/minitest-rails-bffs). I hope you give Minitest a shot. Don't let its size fool you. It may be small, but it's a surprisingly powerful, full-featured testing library.
 
-If this seems like too much configuration to manage on your own, that's okay! Feel free to check out the [minitest-rails](http://blowmage.com/minitest-rails/) gem, which does all this for you, includes some handy rake tasks, and lets you generate tests using the spec DSL. Either way, hopefully you know a little more about the test framework that comes with Rails 4.
+If this seems like too much configuration to manage on your own, that's okay! Feel free to check out the [minitest-rails](https://blowmage.com/minitest-rails/) gem, which does all this for you, includes some handy rake tasks, and lets you generate tests using the spec DSL. Either way, hopefully you know a little more about the test framework that comes with Rails 4.

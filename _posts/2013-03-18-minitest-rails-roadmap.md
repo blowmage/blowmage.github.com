@@ -7,7 +7,7 @@ hackernews: true
 ---
 **tl;dr**: *The newest [minitest](https://github.com/seattlerb/minitest) and [minitest-rails](https://github.com/blowmage/minitest-rails) are awesome.*
 
-I've been working on the [minitest-rails](http://blowmage.com/minitest-rails) project for almost two years now. That is a very long time to work on a project without having a stable release. Fortunately with the [0.9 release](https://rubygems.org/gems/minitest-rails/versions/0.9.0)that I released earlier tonight we are on our way to stability.
+I've been working on the [minitest-rails](https://blowmage.com/minitest-rails) project for almost two years now. That is a very long time to work on a project without having a stable release. Fortunately with the [0.9 release](https://rubygems.org/gems/minitest-rails/versions/0.9.0)that I released earlier tonight we are on our way to stability.
 
 The Problem
 -----------
