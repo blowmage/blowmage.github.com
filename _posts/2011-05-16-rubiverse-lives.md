@@ -5,13 +5,13 @@ desc:   Where I explain that Rubiverse isn't dead, its just been sleeping for mo
 ---
 Okay, so its been a couple years. So what? Big deal. What is a short 768
 day hiatus between friends? The good news is that my [Ruby
-podcast](http://rubiverse.com/) is back. And not just one episode back.
+podcast](https://archive.org/details/RubiversePodcast/) is back. And not just one episode back.
 I’ve published three episodes recently with with Brian Ford, Nathan
 Esquenazi, and Wayne Seguin. I’m really happy with them and excited for
 a future with many more interesting conversations.
 
 [I spoke with Wayne
-Seguin](http://rubiverse.com/podcasts/11-wayne-seguin-on-rvm-and-bdsm)
+Seguin](https://archive.org/details/RubiversePodcast/rubiverse-11-wayne-seguin-on-rvm-and-bdsm.mp3)
 about his über popular [RVM](http://rvm.beginrescueend.com/) and his
 plans to rewrite it using his up and coming [BDSM
 framework](http://bdsm.beginrescueend.com/). BDSM is interesting because
@@ -20,13 +20,13 @@ my mind holds the promise that more can contribute to RVM. I expect
 great things from this in the future.
 
 [I spoke with Nathan
-Esquenazi](http://rubiverse.com/podcasts/10-nathan-esquenazi-on-padrino)
+Esquenazi](https://archive.org/details/RubiversePodcast/rubiverse-10-nathan-esquenazi-on-padrino.mp3)
 about the [Padrino](http://www.padrinorb.com/) web micro-framework and
 its take on creating modular web applications. I’m excited for more
 modularity in our web apps, and think Padrino is on the right track.
 
 [I also spoke with Brian
-Ford](http://rubiverse.com/podcasts/9-brian-ford-on-rubinius) about the
+Ford](https://archive.org/details/RubiversePodcast/rubiverse-9-brian-ford-on-rubinius.mp3) about the
 history and future of [Rubinius](http://rubini.us/). Rubinius seems to
 be on the verge of tipping over and being a viable Ruby implementation
 for mainstream applications. I’m very excited for this and hope that the
