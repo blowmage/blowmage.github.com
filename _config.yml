@@ -2,13 +2,18 @@
 markdown:     kramdown
 highlighter:  rouge
 
+# Permalink
+permalink:    pretty
+
 # Exclude these
 exclude:
 - README
 - CNAME
+- docs
+- .superpowers
 
 # Setup
 title:            blowmage
 tagline:          'A Mike Moore joint'
-description:      'My name is Mike Moore. I like to hack with Ruby. You can <a href="http://humanecode.com/hire">hire me</a>.'
+description:      'My name is Mike Moore. I like to hack with Ruby.'
 url:              https://blowmage.com/

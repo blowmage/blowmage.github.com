@@ -1,33 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-
+<html lang="en">
   {% include head.html %}
-
   <body>
-
-    {% include sidebar.html %}
-
-    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-         content to avoid any CSS collisions with our real content. -->
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-
-          <h3 class="masthead-title">
-            <a href="/" title="Home">{{ site.title }}</a>
-            <small>{{ site.tagline }}</small>
-          </h3>
-        </div>
-      </div>
-
-      <div class="container content">
+    <div class="site">
+      {% include nav.html %}
+      <main>
         {{ content }}
-      </div>
+      </main>
+      {% include footer.html %}
     </div>
-
-    <script src="/javascripts/scale.fix.js"></script>
-    <script src="https://www.google-analytics.com/urchin.js"></script>
-    <script>_uacct = "UA-73219-1"; urchinTracker();</script>
   </body>
 </html>

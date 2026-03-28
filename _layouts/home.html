@@ -1,77 +1,14 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+---
+layout: default
+---
 
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<header class="prompt">
+  <div class="prompt-line">
+    <span class="prompt-tilde">~</span>
+    <span class="prompt-name">{{ site.title }}</span>
+    <span class="prompt-cursor"></span>
+  </div>
+  <div class="tagline">{{ site.tagline }}</div>
+</header>
 
-    <!-- Enable responsiveness on mobile devices -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-    <!-- Open-ID, because that is SOOO relevant now -->
-    <link rel="openid2.provider" href="https://openid.stackexchange.com/openid/provider">
-    <link rel="openid2.local_id" href="https://openid.stackexchange.com/user/34a3aa51-4282-446f-8fd8-e698c2723a71">
-
-    <title>
-      {% if page.title == "Home" %}
-        {{ site.title }} &middot; {{ site.tagline }}
-      {% else %}
-        {{ page.title }} &middot; {{ site.title }}
-      {% endif %}
-    </title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="/stylesheets/poole.css">
-    <link rel="stylesheet" href="/stylesheets/lanyon.css">
-    <link rel="stylesheet" href="/stylesheets/syntax.css">
-    <link rel="stylesheet" href="/stylesheets/blowmage.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
-
-    <!-- Homepage JavaScript -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="/javascripts/jquery.backstretch.js"></script>
-    <script>
-      jQuery(function($) {
-        // To attach Backstrech as the body's backgroun
-        $.backstretch("/images/roa3.jpg", { centeredX: false, centeredY: false });
-      });
-    </script>
-    <script src="https://imakewebthings.github.com/jquery-waypoints/waypoints.min.js" charset="utf-8"></script>
-    <script src="/javascripts/p0n13s.js" charset="utf-8"></script>
-
-    <!-- Icons -->
-    <!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-144-precomposed.png"> -->
-    <link rel="shortcut icon" href="/favicon.ico">
-
-    <!-- RSS -->
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.atom">
-  </head>
-
-
-  <body id="home">
-
-    {% include sidebar.html %}
-
-    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-         content to avoid any CSS collisions with our real content. -->
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-
-          <h3 class="masthead-title">
-            <a href="/" title="Home">{{ site.title }}</a>
-            <small>{{ site.tagline }}</small>
-          </h3>
-        </div>
-      </div>
-
-      <div class="container content">
-        {{ content }}
-      </div>
-    </div>
-
-    <script src="/javascripts/scale.fix.js"></script>
-    <script src="https://www.google-analytics.com/urchin.js"></script>
-    <script>_uacct = "UA-73219-1"; urchinTracker();</script>
-  </body>
-</html>
+{{ content }}

@@ -1,48 +1,21 @@
 ---
 layout: home
-title:  "::blowmage::"
+title: Home
 ---
-<ul class="related-posts">
-{% for post in site.posts limit:1 %}
-  <li>
-    <h2>
-      <a href="{{ post.url | replace:'.html','' }}">
-        {{ post.title }}
-        <small>{{ post.date | date_to_string }}</small>
-      </a><br>
-    </h2>
-    <p>
-      {{ post.desc }}
-      <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a>
-    </p>
+
+<div class="section-label">recent</div>
+
+<ul class="post-list">
+{% for post in site.posts limit:8 %}
+  <li class="post-item">
+    <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+    <span class="post-arrow">&rarr;</span>
+    <div>
+      <a href="{{ post.url }}" class="post-title-link">{{ post.title }}</a>
+      {% if post.desc %}<div class="post-desc">{{ post.desc }}</div>{% endif %}
+    </div>
   </li>
 {% endfor %}
-{% for post in site.posts limit:7 offset:1 %}
-  <li>
-    <h3>
-      <a href="{{ post.url | replace:'.html','' }}">
-        {{ post.title }}
-        <small>{{ post.date | date_to_string }}</small>
-      </a><br>
-    </h3>
-    <p>
-      {{ post.desc }}
-      <a href="{{ post.url | replace:'.html','' }}#disqus_thread">Comments</a>
-    </p>
-  </li>
-{% endfor %}
-  <li>
-    <p>
-      <a href="archives">moar</a>
-    </p>
-  </li>
 </ul>
 
-<script>
-var disqus_shortname = 'blowmage';
-(function () {
-  var s = document.createElement('script'); s.async = true;
-  s.src = 'https://disqus.com/forums/blowmage/count.js';
-  (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-}());
-</script>
+<a href="/archives" class="archives-link">ls -la archives/ &rarr;</a>
