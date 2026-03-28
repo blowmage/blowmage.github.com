@@ -1,0 +1,28 @@
+---
+title:  Ruby Thinking
+layout: post
+desc:   The one where I am frustrated by other developers not getting why Ruby is so awesome.
+---
+I attended the [local .NET user group](http://www.netdug.com/) last night and had a few people approach me about [Boise Ruby Brigade](http://boiserb.com/) (The first meeting is next week! Sign up for the [mailing list](http://groups.google.com/group/boiserb) today!).  In answering their questions about Ruby, I shared the fact that Ruby is a 'type-less' language.  You can take a variable and make it hold an integer, and then make it hold an array of strings.  Not that you ever would, but the point is that you could.  I said this to get them thinking about the implications.  Not surprisingly the discussion engendered some fairly strong "but I like my static typing!" reactions.  With this contrast between Ruby and the languages developers are currently using, I started to explain why this isn't such a bad thing and pointed out some of the benefits of such a language.  I made a claim I've made several times before, but not here yet: "In five years half of all new code we produce will be written using a dynamic language".  I said this at a .NET user group, as a professional .NET developer.
+
+I readily admit this is a bold statement, especially for those for whom dynamic languages such as Perl, Python, and Ruby aren't even on the radar.  But I stand by my prediction.  It is an obvious one to me, considering that both the .NET runtime and the JVM are adding more and more dynamic capabilities.  The discussion eventually degraded as one individual took issue with me and got a little upset about the merits of dynamic languages vs. static languages.  He would not concede that dynamic languages can be a better solution for certain applications, much less become convinced that it was a better way of programming.  It was then that I realized  I wasn't dealing with a static-typing bigot.  I was dealing with a formalist thinker.
+
+In my [review](/2005/09/20/object-thinking) of "[Object Thinking](http://www.amazon.com/exec/obidos/redirect?link_code=ur2&amp;camp=1789&amp;tag=blowmage-20&amp;creative=9325&amp;path=tg/detail/-/0735619654)" I outline Dr. West's definition of formalist and hermeneutic thinking, and how it compared to computer thinking vs. object thinking. Dr. West obviously advocates that we embrace object thinking and shun computer thinking, and outlines the benefits of such a world-view. It is an eye-opening book and I recommend it highly.
+
+The conclusion I've come to is that the C-based languages like C# and Java typically bias our thinking about programming. You need to understand how a computer runs code, but you also need to develop the discipline to divorce yourself from thinking that way when designing software. But this is hard to do because the environment reinforces the computer way of thinking with their structures and base libraries. To borrow from [Martin Fowler](http://www.martinfowler.com/)'s article on [Humane Interfaces](http://www.martinfowler.com/bliki/HumaneInterface.html), take this example for getting the last element of an array:
+
+C#:
+
+{% highlight csharp %}
+anArray[anArray.Length - 1];
+{% endhighlight %}
+
+Ruby:
+
+{% highlight ruby %}
+anArray.last
+{% endhighlight %}
+
+In C# and Java you have the C heritage of accessing variables by shifting your pointer to the correct memory location. In Ruby you simply call the appropriate method. In other words, the C#/Java approach is Implementation-specific, while the Ruby approach is Intention-specific. The difference between the C#/Java and Ruby approach is permeated throughout the base libraries for their respective environments. It is more difficult to write a Ruby-like library in C#/Java because it wouldn't behave like the other C#/Java libraries. And while you can write a C#/Java-like library in Ruby, the longer you use Ruby the more you start thinking the Ruby way. Ruby does this by making it so easy to stop thinking like a computer and start thinking like a human being.
+
+I suppose that what made this individual upset was that he worried that Ruby's simplicity and power would make him obsolete. As if by suggesting that Ruby code was more readable and understandable that the programmer was not needed and that the source code could be put in the hands of end users. Ruby is not a toy; Ruby is a tool to make programmers more productive. It makes programming easier. And I believe you can be happier when using Ruby because it gets out of your way. Ruby makes my life easier because I can focus on getting the job done and not talking to the computer or compiler. That's why I like Ruby.
