@@ -48,7 +48,8 @@
   --orange: #d28445;
   --orange-dim: #a66a35;
   --border: #2a2924;
-  --font: 'Monaspace Neon', ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+  --mono: 'Monaspace Neon', ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* --- Reset & Base --- */
@@ -65,8 +66,8 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font);
-  font-size: 14px;
+  font-family: var(--mono);
+  font-size: 15px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -129,7 +130,7 @@ td {
 /* --- Layout --- */
 
 .site {
-  max-width: 640px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
 }
@@ -295,6 +296,12 @@ main {
 
 /* --- Post Body Content --- */
 
+.post-body,
+.page-body {
+  font-family: var(--sans);
+  font-size: 16px;
+}
+
 .post-body p,
 .page-body p {
   margin: 0 0 1.25rem;
@@ -302,6 +309,7 @@ main {
 
 .post-body h2,
 .page-body h2 {
+  font-family: var(--mono);
   color: var(--fg);
   font-size: 1.15rem;
   font-weight: 700;
@@ -315,6 +323,7 @@ main {
 
 .post-body h3,
 .page-body h3 {
+  font-family: var(--mono);
   color: var(--fg);
   font-size: 1rem;
   font-weight: 700;
@@ -328,6 +337,7 @@ main {
 
 .post-body h4,
 .page-body h4 {
+  font-family: var(--mono);
   color: var(--fg-dim);
   font-size: 0.9rem;
   font-weight: 700;
@@ -336,11 +346,12 @@ main {
 
 .post-body code,
 .page-body code {
+  font-family: var(--mono);
   background: var(--bg-raised);
   color: var(--orange);
   padding: 0.15em 0.4em;
   border-radius: 3px;
-  font-size: 0.9em;
+  font-size: 0.85em;
 }
 
 .post-body pre,
@@ -612,7 +623,7 @@ iframe {
 
 /* --- Responsive --- */
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   body {
     font-size: 13px;
   }
