@@ -67,7 +67,7 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--mono);
-  font-size: 15px;
+  font-size: 0.9375rem;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -340,7 +340,7 @@ main {
 .post-body,
 .page-body {
   font-family: var(--sans);
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .post-body p,
@@ -666,7 +666,7 @@ iframe {
 
 @media (max-width: 720px) {
   body {
-    font-size: 13px;
+    font-size: 0.8125rem;
   }
 
   .site {
@@ -706,5 +706,37 @@ iframe {
 
   .post-nav .next {
     text-align: left;
+  }
+}
+
+/* --- Large screens --- */
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 113%;
+  }
+
+  .site {
+    max-width: 820px;
+  }
+}
+
+@media (min-width: 1440px) {
+  html {
+    font-size: 127%;
+  }
+
+  .site {
+    max-width: 920px;
+  }
+}
+
+@media (min-width: 1680px) {
+  html {
+    font-size: 140%;
+  }
+
+  .site {
+    max-width: 1020px;
   }
 }
