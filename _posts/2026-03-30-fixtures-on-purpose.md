@@ -89,3 +89,9 @@ I'll update this list as new posts go up.
 
 1. [The Combinatorial Trap](/2026/03/30/the-combinatorial-trap/).
     Why you can't create a fixture for every possible state, and why the math is worse than you think.
+2. [Fixture Personas](/2026/04/01/fixture-personas/).
+    How UX designers solved the archetype problem in 1999, and what it looks like applied to test data.
+3. [Telling Stories With Data](/2026/04/03/telling-stories-with-data/).
+    Designing a persona's fixtures end-to-end so the YAML files read like a setup chapter.
+4. [Mining Production for Personas](/2026/04/06/mining-production-for-personas/).
+    How to discover your personas in production data instead of making them up.
