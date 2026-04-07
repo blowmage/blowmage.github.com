@@ -95,3 +95,5 @@ I'll update this list as new posts go up.
     Designing a persona's fixtures end-to-end so the YAML files read like a setup chapter.
 4. [Mining Production for Personas](/2026/04/06/mining-production-for-personas/).
     How to discover your personas in production data instead of making them up.
+5. [The Rule of Four](/2026/04/07/the-rule-of-four/).
+    A practical threshold for deciding when to add a new fixture versus mutate an existing one.
