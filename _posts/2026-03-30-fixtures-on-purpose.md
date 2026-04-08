@@ -97,3 +97,5 @@ I'll update this list as new posts go up.
     How to discover your personas in production data instead of making them up.
 5. [The Rule of Four](/2026/04/07/the-rule-of-four/).
     A practical threshold for deciding when to add a new fixture versus mutate an existing one.
+6. [Fixtures as Documentation](/2026/04/08/fixtures-as-documentation/).
+    How well-designed fixtures become the best documentation of the domain model you have.
