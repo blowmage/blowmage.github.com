@@ -40,14 +40,14 @@
 /* --- Custom Properties --- */
 
 :root {
-  --bg: #111110;
-  --bg-raised: #1a1a18;
-  --fg: #c8c5b8;
-  --fg-dim: #6b6961;
-  --fg-muted: #4a483f;
-  --orange: #d28445;
-  --orange-dim: #a66a35;
-  --border: #2a2924;
+  --bg: #27272a;
+  --bg-raised: #18181b;
+  --fg: #ffffff;
+  --fg-dim: #a1a1aa;
+  --fg-muted: #71717a;
+  --orange: #ea580c;
+  --orange-dim: #c2410c;
+  --border: #3f3f46;
   --mono: 'Monaspace Neon', ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace;
   --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 }
@@ -74,7 +74,7 @@ body {
 }
 
 ::selection {
-  background: #d2844530;
+  background: #ea580c30;
   color: var(--orange);
 }
 
